@@ -132,3 +132,8 @@ body {
 .paste-form {
     margin-left: 30px;
 }
+
+.dropdown-menu {
+    overflow-y: auto;
+    max-height: 130px;
+}

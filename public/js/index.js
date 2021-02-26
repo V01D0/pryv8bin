@@ -9,3 +9,26 @@ function generatePassword() {
     }
     return password;
 }
+// function populateList() {
+//     const optionsList = [
+//         "Burn after read",
+//         "10 Minutes",
+//         "1 Hour",
+//         "1 Day",
+//         "1 Week",
+//         "2 Weeks",
+//         "1 Month",
+//         "6 Months",
+//         "1 Year",
+//     ];
+//     const select = document.querySelector(".dropdown-menu");
+
+//     for (let i = 0; i < optionsList.length; i++) {
+//         let option = optionsList[i];
+//         let el = document.createElement("li");
+//         el.innerHTML = `<button class="dropdown-item" type="button">${option}</button>`;
+//         el.value = option;
+//         select.appendChild(el);
+//     }
+// }
+// populateList();

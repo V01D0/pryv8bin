@@ -26,14 +26,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="docs">API</a>
+                        <a class="nav-link" href="./docs">API</a>
                         <!-- NOT USING VIEW ^^^ -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq">FAQ</a>
+                        <a class="nav-link" href="./faq">FAQ</a>
                         <!-- NOT USING VIEW ^^^ -->
                     </li>
                 </ul>
+            </div>
+            <div class="d-flex">
+                <button class="btn btn-outline-success" type="button">Login</button>
+                <button class="btn btn-outline-primary" type="button">Register</button>
             </div>
         </div>
     </nav>

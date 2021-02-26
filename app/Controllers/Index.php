@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Paste extends Controller
+class Index extends Home
 {
     function __construct()
     {
@@ -13,20 +13,20 @@ class Paste extends Controller
     }
     public function index()
     {
-        return view('home');
+        return view('index');
     }
 
-    public function view($paste = 'home')
+    public function view($page = 'index')
     {
-        if (!is_file(APPPATH . '/Views/pages/' . $paste . '.php')) {
+        if (!is_file(APPPATH . '/Views/pages/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
-            throw new \CodeIgniter\Exceptions\PageNotFoundException($paste);
+            throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
 
-        $data['title'] = ucfirst($paste); // Capitalize the first letter
+        $data['title'] = ucfirst($page); // Capitalize the first letter
 
         echo view('templates/header', $data);
-        echo view('pages/' . $paste, $data);
+        echo view('pages/' . $page, $data);
         echo view('templates/footer', $data);
     }
 }
