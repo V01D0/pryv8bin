@@ -2,5 +2,5 @@
 
 Self-Hosted private pastebin
 
-##TODO:
+## TODO:
 * Syntax highlighting
