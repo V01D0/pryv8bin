@@ -109,13 +109,14 @@
 					<div class="col">
 						<div class="dropdown">
 							<label class="form-check-label">Paste expiration</label>
-							<button class="btn btn-secondary dropdown-toggle" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							<button class="btn btn-secondary dropdown-toggle" onclick="getOption()" value="Never" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 								Never
 							</button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 								<!-- <li><a class="dropdown-item" href="#">Burn after read</a></li>
 								<li><button class="dropdown-item" type="button">Action</button></li>
 								<li><a class="dropdown-item" href="#">Something else here</a></li> -->
+								<!-- TODO: FIX DROPDOWN MENU -->
 							</ul>
 						</div>
 					</div>
@@ -188,6 +189,7 @@
 				el.value = option;
 				select.appendChild(el);
 			}
+			// select = document.querySelector(".dropdown-menu");
 		}
 
 		function chooseOption() {
@@ -215,8 +217,15 @@
 				dropDownTgl.value = "Never";
 			}
 		});
+
+		function getOption() {
+			let x = document.getElementById("expiry");
+			console.log(x.value);
+		}
+
 		populateList();
 		chooseOption();
+		getOption();
 	</script>
 </body>
 
