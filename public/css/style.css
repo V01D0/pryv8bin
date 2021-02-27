@@ -113,10 +113,24 @@ body {
     background-color: #b31515;
 } */
 
+.paste__heading,
+.container {
+    color: white;
+    background-color: rgb(51, 51, 51);
+}
+
 #paste-text {
+    color: white;
     height: 500px;
-    background-color: rgb(161, 161, 161);
+    background-color: rgb(51, 51, 51);
     resize: none;
+    border-color: yellowgreen;
+    font-family: "Titillium Web", sans-serif;
+}
+
+#paste-text:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem yellowgreen;
 }
 
 .btn {
@@ -126,11 +140,12 @@ body {
 
 .paste__heading {
     font-family: "Titillium Web", sans-serif;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 .paste-form {
-    margin-left: 30px;
+    padding-left: 30px;
+    background-color: rgb(51, 51, 51);
 }
 
 .dropdown-menu {
