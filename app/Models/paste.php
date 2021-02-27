@@ -48,7 +48,8 @@ class paste
     //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
     protected function parsePaste($expiry, $title, $password)
     {
-        $paste = $this->db->real_escape_string($_POST['paste']);
+        // $paste = $this->db->real_escape_string($_POST['paste']);
+        $paste = $this->db->real_escape_string($this->input->post);
         if (empty($paste)) {
             //IF PASTE IS EMPTY
             $msg = _("Please enter a non empty string!");
