@@ -9,6 +9,35 @@ function generatePassword() {
     }
     return password;
 }
+
+function changeOption(value) {
+    let select = document.getElementById("expiry");
+    let opts = select.options;
+    for (let opt, i = 0; (opt = opts[i]); i++) {
+        if (opt.value == value) {
+            select.selectedIndex = i;
+            break;
+        }
+    }
+}
+
+function validate() {
+    let textArea = document.getElementById("paste-text");
+    if (textArea.value.trim() == "") {
+        alert("empty");
+    }
+}
+
+function uncheck() {
+    let selected = document.getElementById("expiry");
+    if (selected.value != "bar") {
+        let cb = document.getElementById("burn-after-read");
+        cb.checked = false;
+    } else {
+        cb.checked = true;
+    }
+}
+
 // function populateList() {
 //     const optionsList = [
 //         "Burn after read",
