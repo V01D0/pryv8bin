@@ -16,10 +16,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
             <!-- <li id="nav__brand"></li> -->
-            <a class="navbar-brand" href=".">BRAND LOGO</a>
+            <a class="navbar-brand" href=".">Pryv8bin</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,8 +36,8 @@
                 </ul>
             </div>
             <div class="d-flex">
-                <button class="btn btn-outline-success" type="button">Login</button>
-                <button class="btn btn-outline-primary" type="button">Register</button>
+                <button class="btn btn-success" type="button">Login</button>
+                <button class="btn btn-primary" type="button">Register</button>
             </div>
         </div>
     </nav>

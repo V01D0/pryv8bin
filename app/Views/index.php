@@ -17,10 +17,10 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-light bg-info">
 		<div class="container-fluid">
 			<!-- <li id="nav__brand"></li> -->
-			<a class="navbar-brand" href=".">BRAND LOGO</a>
+			<a class="navbar-brand" href=".">Pryv8bin</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -37,8 +37,8 @@
 				</ul>
 			</div>
 			<div class="d-flex">
-				<button class="btn btn-outline-success" type="button">Login</button>
-				<button class="btn btn-outline-primary" type="button">Register</button>
+				<button class="btn btn-success" type="button">Login</button>
+				<button class="btn btn-primary" type="button">Register</button>
 			</div>
 		</div>
 	</nav>
@@ -98,7 +98,7 @@
 				</div>
 			</div>
 		</form> -->
-		<?= form_open('paste') ?>
+		<?= form_open('paste', 'onsubmit="validate()"') ?>
 		<div class="col-10">
 			<textarea class="form-control" id="paste-text"></textarea>
 		</div>
@@ -107,17 +107,34 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
+						<br>
 						<div class="dropdown">
 							<label class="form-check-label">Paste expiration</label>
-							<button class="btn btn-secondary dropdown-toggle" onclick="getOption()" value="Never" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							<!-- <button class="btn btn-secondary dropdown-toggle" onclick="getOption()" value="Never" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 								Never
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-								<!-- <li><a class="dropdown-item" href="#">Burn after read</a></li>
+							</button> -->
+							<!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> -->
+							<!-- <li><a class="dropdown-item" href="#">Burn after read</a></li>
 								<li><button class="dropdown-item" type="button">Action</button></li>
 								<li><a class="dropdown-item" href="#">Something else here</a></li> -->
-								<!-- TODO: FIX DROPDOWN MENU -->
-							</ul>
+							<!-- TODO: FIX DROPDOWN MENU -->
+							<!-- </ul> -->
+							<?php
+							$options = [
+								'never' => 'Never',
+								'bar' => 'Burn after read',
+								'm10' => '10 Minutes',
+								'd1' => '1 Day',
+								'w1' => '1 Week',
+								'w2' => '2 Weeks',
+								'm1' => '1 Month',
+								'm6' => '6 Months',
+								'y1' => '1 Year'
+							];
+							echo form_dropdown('expiry', $options, 'bar', 'id=expiry onchange="uncheck()"');
+							?>
+							<br>
+							<br>
 						</div>
 					</div>
 				</div>
@@ -128,7 +145,7 @@
 					<div class="col">
 						<div>
 							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="burn-after-read">
+								<input class="form-check-input" checked type="checkbox" value="" id="burn-after-read">
 								<label class="form-check-label" for="burn-after-read">
 									Burn after read?
 								</label>
@@ -149,7 +166,7 @@
 					</div>
 				</div>
 				<br>
-				<button type="submit" id="paste__submit" class="btn btn-success">Submit</button>
+				<button id="paste__submit" onclick="validate()" class="btn btn-success">Submit</button>
 			</div>
 		</div>
 		<?= form_close() ?>
@@ -157,75 +174,26 @@
 		<br>
 	</div>
 	<script>
-		var cb = document.getElementById("password")
+		let cb = document.getElementById("password")
 		cb.addEventListener('change', function() {
 			if (this.checked) {
-				var passwordField = document.getElementById("inputPassword2");
+				let passwordField = document.getElementById("inputPassword2");
 				passwordField.removeAttribute('hidden');
 				passwordField.value = generatePassword();
 			} else {
-				var passwordField = document.getElementById("inputPassword2");
+				let passwordField = document.getElementById("inputPassword2");
 				passwordField.setAttribute('hidden', '')
 			}
 		});
 
-		function populateList() {
-			const optionsList = [
-				"Burn after read",
-				"10 Minutes",
-				"1 Hour",
-				"1 Day",
-				"1 Week",
-				"2 Weeks",
-				"1 Month",
-				"6 Months",
-				"1 Year",
-			];
-			const select = document.querySelector(".dropdown-menu");
-			for (let i = 0; i < optionsList.length; i++) {
-				let option = optionsList[i];
-				let el = document.createElement("li");
-				el.innerHTML = `<button class="dropdown-item" type="button">${option}</button>`;
-				el.value = option;
-				select.appendChild(el);
-			}
-			// select = document.querySelector(".dropdown-menu");
-		}
-
-		function chooseOption() {
-			const el = document.querySelectorAll(".dropdown-item");
-			for (let i = 0; i < el.length; i++) {
-				el[i].addEventListener('click', function() {
-					let dropDownTgl = document.querySelector(".dropdown-toggle");
-					dropDownTgl.textContent = el[i].textContent;
-					dropDownTgl.value = el[i].textContent;
-				});
-			}
-		}
-
 		cb = document.getElementById("burn-after-read");
 		cb.addEventListener('change', function() {
 			if (this.checked) {
-				let dropDownTgl = document.querySelector(".dropdown-toggle");
-				dropDownTgl.textContent = "Burn after read";
-				dropDownTgl.value = "Burn after read";
-				// dropDownTgl.remove(dropDownTgl.selectedIndex)
+				changeOption("bar");
 			} else {
-				let dropDownTgl = document.querySelector(".dropdown-toggle");
-				console.log('hoot');
-				dropDownTgl.textContent = "Never";
-				dropDownTgl.value = "Never";
+				changeOption("never");
 			}
 		});
-
-		function getOption() {
-			let x = document.getElementById("expiry");
-			console.log(x.value);
-		}
-
-		populateList();
-		chooseOption();
-		getOption();
 	</script>
 </body>
 
