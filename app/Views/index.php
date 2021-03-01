@@ -100,7 +100,7 @@
 		</form> -->
 		<?= form_open('paste', 'onsubmit="validate()"') ?>
 		<div class="col-10">
-			<textarea class="form-control" id="paste-text"></textarea>
+			<textarea class="form-control" id="paste-text" oninput="validate()"></textarea>
 		</div>
 		<br>
 		<div>
@@ -166,7 +166,7 @@
 					</div>
 				</div>
 				<br>
-				<button id="paste__submit" onclick="validate()" class="btn btn-success">Submit</button>
+				<button id="paste__submit" disabled class="btn btn-success">Submit</button>
 			</div>
 		</div>
 		<?= form_close() ?>
@@ -174,6 +174,9 @@
 		<br>
 	</div>
 	<script>
+		function init() {
+			document.getElementById("paste-text").focus();
+		}
 		let cb = document.getElementById("password")
 		cb.addEventListener('change', function() {
 			if (this.checked) {
@@ -194,6 +197,7 @@
 				changeOption("never");
 			}
 		});
+		init();
 	</script>
 </body>
 
