@@ -113,6 +113,10 @@ body {
     background-color: #b31515;
 } */
 
+.navbar-brand {
+    font-family: "Titillium Web", sans-serif;
+}
+
 .paste__heading,
 .container {
     color: white;
