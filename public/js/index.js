@@ -21,12 +21,38 @@ function changeOption(value) {
     }
 }
 
-function validate() {
-    let textArea = document.getElementById("paste-text");
+function checkEmpty(textArea) {
     if (textArea.value.trim() == "") {
-        alert("empty");
+        return false;
+    }
+    return true;
+}
+
+function validate() {
+    let sumbitButton = document.getElementById("paste__submit");
+    let textArea = document.getElementById("paste-text");
+    let res = checkEmpty(textArea);
+    if (res === true) {
+        textArea.style.borderColor = "yellowgreen";
+        textArea.style.boxShadow = "0 0 0 0.15rem yellowgreen";
+        sumbitButton.removeAttribute("disabled");
+    } else {
+        textArea.style.borderColor = "red";
+        textArea.style.boxShadow = "0 0 0 0.15rem red";
+        sumbitButton.setAttribute("disabled", "");
     }
 }
+
+// function validate() {
+//     let textArea = document.getElementById("paste-text");
+//     if (textArea.value.trim() == "") {
+//         textArea.focus();
+//         textArea.style.boxShadow = "0 0 0 0.15rem red";
+//         textArea.style.borderColor = "red";
+//     } else {
+//         alert("empty");
+//     }
+// }
 
 function uncheck() {
     let selected = document.getElementById("expiry");
