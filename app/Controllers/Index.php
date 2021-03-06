@@ -8,8 +8,7 @@ class Index extends Home
 {
     function __construct()
     {
-        helper('html');
-        helper('form');
+        parent::__construct();
     }
     public function index()
     {

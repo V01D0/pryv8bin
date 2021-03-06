@@ -8,6 +8,7 @@ class Home extends BaseController
 	{
 		helper('html');
 		helper('form');
+		helper('url');
 	}
 	public function index()
 	{
