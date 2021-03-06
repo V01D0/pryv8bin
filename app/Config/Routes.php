@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->add('pastes/(:any)', 'Pastes::view/$1');
+// $routes->add('/index.php', 'Home::index');
 // $routes->add('pastes/docs', '/docs');
 /*
  * --------------------------------------------------------------------
