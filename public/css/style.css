@@ -1,111 +1,108 @@
 /* titillium-web-regular - latin */
 @font-face {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/titillium-web-v9-latin-regular.eot"); /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/titillium-web-v9-latin-regular.eot?#iefix")
-            format("embedded-opentype"),
-        /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-regular.woff2")
-            format("woff2"),
-        /* Super Modern Browsers */
-            url("../fonts/titillium-web-v9-latin-regular.woff") format("woff"),
-        /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-regular.ttf")
-            format("truetype"),
-        /* Safari, Android, iOS */
-            url("../fonts/titillium-web-v9-latin-regular.svg#TitilliumWeb")
-            format("svg"); /* Legacy iOS */
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/titillium-web-v9-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("../fonts/titillium-web-v9-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../fonts/titillium-web-v9-latin-regular.woff") format("woff"),
+    /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../fonts/titillium-web-v9-latin-regular.svg#TitilliumWeb")
+      format("svg"); /* Legacy iOS */
 }
 
 /* titillium-web-600 - latin */
 @font-face {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-weight: 600;
-    src: url("../fonts/titillium-web-v9-latin-600.eot"); /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/titillium-web-v9-latin-600.eot?#iefix")
-            format("embedded-opentype"),
-        /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-600.woff2")
-            format("woff2"),
-        /* Super Modern Browsers */
-            url("../fonts/titillium-web-v9-latin-600.woff") format("woff"),
-        /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-600.ttf")
-            format("truetype"),
-        /* Safari, Android, iOS */
-            url("../fonts/titillium-web-v9-latin-600.svg#TitilliumWeb")
-            format("svg"); /* Legacy iOS */
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/titillium-web-v9-latin-600.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("../fonts/titillium-web-v9-latin-600.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-600.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/titillium-web-v9-latin-600.woff")
+      format("woff"),
+    /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-600.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../fonts/titillium-web-v9-latin-600.svg#TitilliumWeb") format("svg"); /* Legacy iOS */
 }
 
 /* titillium-web-700 - latin */
 @font-face {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-weight: 700;
-    src: url("../fonts/titillium-web-v9-latin-700.eot"); /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/titillium-web-v9-latin-700.eot?#iefix")
-            format("embedded-opentype"),
-        /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-700.woff2")
-            format("woff2"),
-        /* Super Modern Browsers */
-            url("../fonts/titillium-web-v9-latin-700.woff") format("woff"),
-        /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-700.ttf")
-            format("truetype"),
-        /* Safari, Android, iOS */
-            url("../fonts/titillium-web-v9-latin-700.svg#TitilliumWeb")
-            format("svg"); /* Legacy iOS */
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/titillium-web-v9-latin-700.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("../fonts/titillium-web-v9-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/titillium-web-v9-latin-700.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/titillium-web-v9-latin-700.woff")
+      format("woff"),
+    /* Modern Browsers */ url("../fonts/titillium-web-v9-latin-700.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../fonts/titillium-web-v9-latin-700.svg#TitilliumWeb") format("svg"); /* Legacy iOS */
 }
 
 /* poppins-regular - latin */
 @font-face {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/poppins-v15-latin-regular.eot"); /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/poppins-v15-latin-regular.eot?#iefix")
-            format("embedded-opentype"),
-        /* IE6-IE8 */ url("../fonts/poppins-v15-latin-regular.woff2")
-            format("woff2"),
-        /* Super Modern Browsers */
-            url("../fonts/poppins-v15-latin-regular.woff") format("woff"),
-        /* Modern Browsers */ url("../fonts/poppins-v15-latin-regular.ttf")
-            format("truetype"),
-        /* Safari, Android, iOS */
-            url("../fonts/poppins-v15-latin-regular.svg#Poppins") format("svg"); /* Legacy iOS */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/poppins-v15-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("../fonts/poppins-v15-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/poppins-v15-latin-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/poppins-v15-latin-regular.woff")
+      format("woff"),
+    /* Modern Browsers */ url("../fonts/poppins-v15-latin-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../fonts/poppins-v15-latin-regular.svg#Poppins") format("svg"); /* Legacy iOS */
 }
 
 /* poppins-500 - latin */
 @font-face {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    src: url("../fonts/poppins-v15-latin-500.eot"); /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/poppins-v15-latin-500.eot?#iefix")
-            format("embedded-opentype"),
-        /* IE6-IE8 */ url("../fonts/poppins-v15-latin-500.woff2")
-            format("woff2"),
-        /* Super Modern Browsers */ url("../fonts/poppins-v15-latin-500.woff")
-            format("woff"),
-        /* Modern Browsers */ url("../fonts/poppins-v15-latin-500.ttf")
-            format("truetype"),
-        /* Safari, Android, iOS */
-            url("../fonts/poppins-v15-latin-500.svg#Poppins") format("svg"); /* Legacy iOS */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/poppins-v15-latin-500.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("../fonts/poppins-v15-latin-500.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/poppins-v15-latin-500.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/poppins-v15-latin-500.woff")
+      format("woff"),
+    /* Modern Browsers */ url("../fonts/poppins-v15-latin-500.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/poppins-v15-latin-500.svg#Poppins")
+      format("svg"); /* Legacy iOS */
 }
 
 html,
 body {
-    height: 100%;
-    /* color: #333; */
-    /* width: 80%; */
-    /* margin-left: 10%; */
-    /* margin-right: 10%; */
-    top: 0;
-    /* background-color: blue; */
-    margin: 0;
+  height: 100%;
+  /* color: #333; */
+  /* width: 80%; */
+  /* margin-left: 10%; */
+  /* margin-right: 10%; */
+  top: 0;
+  /* background-color: blue; */
+  margin: 0;
+  overflow: hidden;
 }
 
 /* .paste-text {
@@ -114,45 +111,49 @@ body {
 } */
 
 .navbar-brand {
-    font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .paste__heading,
 .container {
-    color: white;
-    background-color: rgb(51, 51, 51);
+  color: white;
+  background-color: rgb(51, 51, 51);
 }
 
 #paste-text {
-    color: white;
-    height: 500px;
-    background-color: rgb(51, 51, 51);
-    resize: none;
-    border-color: yellowgreen;
-    font-family: "Titillium Web", sans-serif;
+  color: white;
+  height: 500px;
+  background-color: rgb(51, 51, 51);
+  resize: none;
+  border-color: yellowgreen;
+  font-family: "Titillium Web", sans-serif;
 }
 
 #paste-text:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.15rem yellowgreen;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem yellowgreen;
 }
 
 .btn {
-    font-family: "Poppins", sans-serif;
-    margin-left: 15px;
+  font-family: "Poppins", sans-serif;
+  margin-left: 15px;
 }
 
 .paste__heading {
-    font-family: "Titillium Web", sans-serif;
-    /* margin: 10px; */
+  font-family: "Titillium Web", sans-serif;
+  /* margin: 10px; */
 }
 
 .paste-form {
-    padding-left: 30px;
-    background-color: rgb(51, 51, 51);
+  padding-left: 30px;
+  background-color: rgb(51, 51, 51);
 }
 
 .dropdown-menu {
-    overflow-y: auto;
-    max-height: 130px;
+  overflow-y: auto;
+  max-height: 130px;
 }
+
+/* label {
+  display: flex;
+} */
