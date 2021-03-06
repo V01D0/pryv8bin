@@ -12,8 +12,8 @@
 	<link rel="manifest" href="/icons/site.webmanifest">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-	<script src="bootstrap/dist/js/bootstrap.bundle.js"></script>
-	<script src="js/index.js"></script>
+	<script src="/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	<script src="/js/index.js"></script>
 </head>
 
 <body>
@@ -100,7 +100,7 @@
 		</form> -->
 		<?= form_open('paste', 'onsubmit="validate()"') ?>
 		<div class="col-10">
-			<textarea class="form-control" id="paste-text" oninput="validate()"></textarea>
+			<textarea class="form-control" name="paste_content" id="paste-text" oninput="validate()"></textarea>
 		</div>
 		<br>
 		<div>
@@ -109,6 +109,7 @@
 					<div class="col">
 						<br>
 						<div class="dropdown">
+							<br>
 							<label class="form-check-label">Paste expiration</label>
 							<!-- <button class="btn btn-secondary dropdown-toggle" onclick="getOption()" value="Never" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 								Never
@@ -139,11 +140,21 @@
 					</div>
 				</div>
 			</div>
-			<br>
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div>
+							<div class="form-group col-md-3">
+								<div class="w-50">
+									<!-- <label class="form-check-label" for="Title">Title</label>
+									<input class="form-control" id="Title" name="title" placeholder="Title"> -->
+									<div class="form-group">
+										<label for="title">Title</label>
+										<input class="form-control" id="title" name="title">
+									</div>
+								</div>
+							</div>
+							<br>
 							<div class="form-check">
 								<input class="form-check-input" checked type="checkbox" value="" id="burn-after-read">
 								<label class="form-check-label" for="burn-after-read">
@@ -158,7 +169,7 @@
 								<div class="form-group col-md-3">
 									<div class="w-50">
 										<label for="inputPassword2" class="visually-hidden">Password</label>
-										<input class="form-control" hidden id="inputPassword2" placeholder="Password">
+										<input class="form-control" hidden id="inputPassword2" name="password" placeholder="Password">
 									</div>
 								</div>
 							</div>
@@ -166,8 +177,10 @@
 					</div>
 				</div>
 				<br>
-				<button id="paste__submit" disabled class="btn btn-success">Submit</button>
+				<button id="paste__submit" name="submit" type="submit" value="Submit" disabled class="btn btn-success">Submit</button>
 			</div>
+			<br>
+			<br>
 		</div>
 		<?= form_close() ?>
 
