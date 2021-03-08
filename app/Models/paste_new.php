@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class paste extends Model
+class paste_new extends Model
 {
     function __construct()
     {
@@ -56,15 +56,45 @@ class paste extends Model
     }
 
     //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
-    protected function parsePaste($expiry, $title, $password)
+    protected function parsePaste($paste, $expiry, $title, $password)
     {
         // $paste = $this->db->real_escape_string($_POST['paste']);
         // $paste = $this->db->real_escape_string($this->input->post);
-        $paste = "";
         if (empty($paste)) {
             //IF PASTE IS EMPTY
             $msg = _("Please enter a non empty string!");
         } else {
+            switch ($expiry) {
+                case "never":
+                    $expiry = NULL;
+                    break;
+                case "bar":
+                    $expiry = NULL;
+                    break;
+                case "10m":
+                    $expiry = $this->db->query("NOW() + INTERVAL 10 MINUTE");
+                    break;
+                case "d1":
+                    $expiry = $this->db->query("NOW() + INTERVAL 1 DAY");
+                    break;
+                case "w1":
+                    $expiry = $this->db->query("NOW() + INTERVAL 1 WEEK");
+                    break;
+                case "w2":
+                    $expiry = $this->db->query("NOW() + INTERVAL 2 WEEK");
+                    break;
+                case "m1":
+                    $expiry = $this->db->query("NOW() + INTERVAL 1 MONTH");
+                    break;
+                case "m6":
+                    $expiry = $this->db->query("NOW() + INTERVAL 6 MONTH");
+                    break;
+                case "1y":
+                    $expiry = $this->db->query("NOW() + INTERVAL 1 YEAR");
+                    break;
+                default:
+                    $expiry = NULL;
+            }
             //IF PASTE IS NOT EMPTY
             if (strlen($paste) >= 1024) {
                 //IF PASTE IS MORE THAN 1KB
