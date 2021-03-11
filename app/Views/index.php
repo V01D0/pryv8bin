@@ -169,7 +169,7 @@
 								<div class="form-group col-md-3">
 									<div class="w-50">
 										<label for="inputPassword2" class="visually-hidden">Password</label>
-										<input class="form-control" hidden id="inputPassword2" name="password" placeholder="Password">
+										<input class="form-control" hidden id="inputPassword2" name="password" value="">
 									</div>
 								</div>
 							</div>
