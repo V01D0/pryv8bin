@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
+use CodeIgniter\Database\ConnectionInterface;
 
-class paste_new extends Model
+class paste_new
 {
-    function __construct()
+    function __construct(ConnectionInterface &$db)
     {
         helper('filesystem');
-        $db = \Config\Database::connect();
-        $this->builder = $db->table('pastes');
+        $this->db = &$db;
+        // $db = \Config\Database::connect();
     }
 
     //CHECK IF LINK EXISTS IN DB
@@ -20,7 +20,11 @@ class paste_new extends Model
         // if ($builder) {
         //     return true;
         // }
-        $query = $this->builder->getWhere('link', $link);
+        // $query = $this->builder->getWhere('link', $link);
+        // $res = $query->getResult();
+        $query = $this->db->table('pastes')
+            ->where('link = ', $link)
+            ->get();
         $res = $query->getResult();
         if (empty($res))
             return false;
@@ -38,10 +42,10 @@ class paste_new extends Model
         $link = "";
         foreach ($arr as $file => $lines) {
             // echo "$file " . "$lines" . "\n";
-            $line = mt_rand(1, $lines);
+            $line = mt_rand(0, $lines);
             $file = new \SplFileObject("$file");
             $file->seek($line);
-            $link .= $file->current();
+            $link .= ucfirst($file->current());
             $link = trim($link);
         }
         $link = str_replace(' ', '', $link);
@@ -55,74 +59,88 @@ class paste_new extends Model
         return $link;
     }
 
-    //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
-    protected function parsePaste($paste, $expiry, $title, $password)
+    public function getExpiry($expiry)
     {
+
+        switch ($expiry) {
+            case "m10":
+                $query = "NOW() + INTERVAL 10 MINUTE";
+                break;
+            case "d1":
+                $query = "NOW() + INTERVAL 1 DAY";
+                break;
+            case "w1":
+                $query = "NOW() + INTERVAL 1 WEEK";
+                break;
+            case "w2":
+                $query = "NOW() + INTERVAL 2 WEEK";
+                break;
+            case "m1":
+                $query = "NOW() + INTERVAL 1 MONTH";
+                break;
+            case "m6":
+                $query = "NOW() + INTERVAL 6 MONTH";
+                break;
+            case "1y":
+                $query = "NOW() + INTERVAL 1 YEAR";
+                break;
+            default:
+                return NULL;
+                break;
+        }
+        return $query;
+    }
+
+    //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
+    public function parsePaste(array $attributes)
+    {
+        $paste = $attributes['paste_content'];
+        $expiry = $attributes['expiry'];
+        $title = empty($attributes['title']) ? NULL : $attributes['title'];
+        $password = empty($attributes['password']) ? NULL : password_hash($attributes['password'], PASSWORD_BCRYPT);
+
         // $paste = $this->db->real_escape_string($_POST['paste']);
         // $paste = $this->db->real_escape_string($this->input->post);
         if (empty($paste)) {
             //IF PASTE IS EMPTY
-            $msg = _("Please enter a non empty string!");
+            return view('error');
         } else {
-            switch ($expiry) {
-                case "never":
-                    $expiry = NULL;
-                    break;
-                case "bar":
-                    $expiry = NULL;
-                    break;
-                case "10m":
-                    $expiry = $this->db->query("NOW() + INTERVAL 10 MINUTE");
-                    break;
-                case "d1":
-                    $expiry = $this->db->query("NOW() + INTERVAL 1 DAY");
-                    break;
-                case "w1":
-                    $expiry = $this->db->query("NOW() + INTERVAL 1 WEEK");
-                    break;
-                case "w2":
-                    $expiry = $this->db->query("NOW() + INTERVAL 2 WEEK");
-                    break;
-                case "m1":
-                    $expiry = $this->db->query("NOW() + INTERVAL 1 MONTH");
-                    break;
-                case "m6":
-                    $expiry = $this->db->query("NOW() + INTERVAL 6 MONTH");
-                    break;
-                case "1y":
-                    $expiry = $this->db->query("NOW() + INTERVAL 1 YEAR");
-                    break;
-                default:
-                    $expiry = NULL;
-            }
             //IF PASTE IS NOT EMPTY
             if (strlen($paste) >= 1024) {
                 //IF PASTE IS MORE THAN 1KB
                 $paste_ = substr($paste, 1024, strlen($paste));
-                $this->storePaste($_SESSION['uid'], $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
+                return $paste;
+                $this->storePaste(0, $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
             } else
-                $this->storePaste($_SESSION['uid'], $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
+                $this->storePaste(0, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
         }
     }
 
     //SERVER SIDE - WRITING PASTE TO DB
-    protected function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
+    public function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
     {
         if (trim($paste_) != "") {
             if (!write_file(WRITEPATH . '/' . $link . '.txt', $paste_)) {
                 return view('error');
             }
         }
-        $data = [
-            'uid' => $uid,
-            'link' => $link,
-            'paste' => $paste,
-            'expiry' => $expiry,
-            'title' => $title,
-            'password', $password
-        ];
+        $expiry = $this->getExpiry($expiry);
+
+        if (is_null($expiry)) {
+            $data = [
+                'uid' => $uid,
+                'link' => $link,
+                'paste' => $paste,
+                'expiry' => $expiry,
+                'title' => $title,
+                'password' => $password
+            ];
+            $this->db->table('pastes')
+                ->insert($data);
+        }
+        // } else {
+        //     $this->db->table->set('expiry', "NOW()", FALSE);
+        // }
         // $sql = "INSERT INTO `pastes` VALUES ($uid, $link, $paste, $expiry, $title, $password)";
-        $this->builder->insert($data);
-        header("Location: $link");
     }
 }
