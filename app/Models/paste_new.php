@@ -13,7 +13,7 @@ class paste_new
         // $db = \Config\Database::connect();
     }
 
-    //CHECK IF LINK EXISTS IN DB
+    //CHECK IF GENERATED LINK EXISTS IN DB
     protected function isNameInDB($link)
     {
         // $sql = "SELECT 1 FROM `pastes` WHERE `link`=`$link`";
@@ -39,6 +39,7 @@ class paste_new
             "assets/verbs.txt" => 1042,
             "assets/animals.txt" => 520
         );
+        //adjective+verb+animal
         $link = "";
         foreach ($arr as $file => $lines) {
             // echo "$file " . "$lines" . "\n";
@@ -49,7 +50,6 @@ class paste_new
             $link = trim($link);
         }
         $link = str_replace(' ', '', $link);
-        //adjective+verb+animal
         // $link = str_replace('\n', '', $link);
         $arr = null;
         $file = null;
@@ -59,6 +59,7 @@ class paste_new
         return $link;
     }
 
+    //FUNCTION TO GENERATE SQL QUERY FOR RESPECTIVE DATE
     public function getExpiry($expiry)
     {
 
@@ -118,6 +119,7 @@ class paste_new
     //SERVER SIDE - WRITING PASTE TO DB
     public function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
     {
+        //CHECK IF PASTE IS MORE THAN 1KB, IF SO WRITE EXTRA TO txt FILE
         if (trim($paste_) != "") {
             if (!write_file(WRITEPATH . '/' . $link . '.txt', $paste_)) {
                 return view('error');

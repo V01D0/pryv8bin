@@ -13,7 +13,9 @@ class Paste extends Home
     }
     public function index()
     {
+        //INITIATE DATABASE CONNECTION
         $db = db_connect();
+        //CREATE MODEL VARIABL
         $model = new paste_new($db);
         // $model = \model('App\Models\paste_new');
         $request = service('request');
