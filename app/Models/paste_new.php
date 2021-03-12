@@ -125,24 +125,26 @@ class paste_new
                 return view('error');
             }
         }
-        if (!is_null($expiry)) {
-            $ex = $expiry;
+        //IF EXPIRY IS NULL, $ex BECOMES NULL.
+        $ex =  is_null($expiry) ? NULL : $expiry;
+        if (!is_null($ex)) {
+            //  CONVERTING stdClass OBJECT TO JSON TO CONVERT TO STRING (HACKY??)
             $ex = json_decode(json_encode($ex), true);
             foreach ($ex as $key => $value) {
                 $ex = $value;
             }
-            $data = [
-                'uid' => $uid,
-                'link' => $link,
-                'paste' => $paste,
-                'expiry' => $ex,
-                'title' => $title,
-                'password' => $password
-            ];
-            // $this->db->table->set('expiry', $expiry, false);
-            $this->db->table('pastes')
-                ->insert($data);
         }
+        $data = [
+            'uid' => $uid,
+            'link' => $link,
+            'paste' => $paste,
+            'expiry' => $ex,
+            'title' => $title,
+            'password' => $password
+        ];
+        // $this->db->table->set('expiry', $expiry, false);
+        $this->db->table('pastes')
+            ->insert($data);
         // } else {
         //     $this->db->table->set('expiry', "NOW()", FALSE);
         // }
