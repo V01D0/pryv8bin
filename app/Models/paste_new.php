@@ -64,31 +64,31 @@ class paste_new
 
         switch ($expiry) {
             case "m10":
-                $query = "NOW() + INTERVAL 10 MINUTE";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 10 MINUTE");
                 break;
             case "d1":
-                $query = "NOW() + INTERVAL 1 DAY";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 1 DAY");
                 break;
             case "w1":
-                $query = "NOW() + INTERVAL 1 WEEK";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 1 WEEK");
                 break;
             case "w2":
-                $query = "NOW() + INTERVAL 2 WEEK";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 2 WEEK");
                 break;
             case "m1":
-                $query = "NOW() + INTERVAL 1 MONTH";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 1 MONTH");
                 break;
             case "m6":
-                $query = "NOW() + INTERVAL 6 MONTH";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 6 MONTH");
                 break;
             case "1y":
-                $query = "NOW() + INTERVAL 1 YEAR";
+                $query = $this->db->query("SELECT NOW() + INTERVAL 1 YEAR");
                 break;
             default:
                 return NULL;
                 break;
         }
-        return $query;
+        return $query->getRow();
     }
 
     //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
@@ -98,21 +98,20 @@ class paste_new
         $expiry = $attributes['expiry'];
         $title = empty($attributes['title']) ? NULL : $attributes['title'];
         $password = empty($attributes['password']) ? NULL : password_hash($attributes['password'], PASSWORD_BCRYPT);
-
         // $paste = $this->db->real_escape_string($_POST['paste']);
         // $paste = $this->db->real_escape_string($this->input->post);
         if (empty($paste)) {
             //IF PASTE IS EMPTY
             return view('error');
         } else {
+            $expiry = $this->getExpiry($expiry);
             //IF PASTE IS NOT EMPTY
             if (strlen($paste) >= 1024) {
                 //IF PASTE IS MORE THAN 1KB
                 $paste_ = substr($paste, 1024, strlen($paste));
-                return $paste;
                 $this->storePaste(0, $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
             } else
-                $this->storePaste(0, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
+                return $this->storePaste(0, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
         }
     }
 
@@ -124,17 +123,21 @@ class paste_new
                 return view('error');
             }
         }
-        $expiry = $this->getExpiry($expiry);
-
-        if (is_null($expiry)) {
+        if (!is_null($expiry)) {
+            $ex = $expiry;
+            $ex = json_decode(json_encode($ex), true);
+            foreach ($ex as $key => $value) {
+                $ex = $value;
+            }
             $data = [
                 'uid' => $uid,
                 'link' => $link,
                 'paste' => $paste,
-                'expiry' => $expiry,
+                'expiry' => $ex,
                 'title' => $title,
                 'password' => $password
             ];
+            // $this->db->table->set('expiry', $expiry, false);
             $this->db->table('pastes')
                 ->insert($data);
         }
