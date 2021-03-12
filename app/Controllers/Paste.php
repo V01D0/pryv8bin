@@ -24,9 +24,15 @@ class Paste extends Home
         }
         // echo $pasteVars['expiry'];
         // return view('result');
-        $exp = $model->parsePaste($pasteVars);
-        var_dump($exp);
-        return view('error');
+        // $ex = $model->parsePaste($pasteVars);
+        // $ex = json_decode(json_encode($ex), true);
+        // foreach ($ex as $key => $value) {
+        //     $ex = $value;
+        // }
+        // echo $ex;
+
+        $model->parsePaste($pasteVars);
+        // return view('result');
         // $model->parsePaste($pasteVars);
     }
 
