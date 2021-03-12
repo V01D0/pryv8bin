@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 05, 2021 at 10:41 PM
--- Server version: 8.0.23-0ubuntu0.20.04.1
+-- Generation Time: Mar 12, 2021 at 12:46 PM
+-- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth` (
-  `uid` int NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'reset+verification hash',
-  `key` varchar(21) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'API key'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `uid` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `hash` varchar(255) DEFAULT NULL COMMENT 'reset+verification hash',
+  `key` varchar(21) DEFAULT NULL COMMENT 'API key'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -44,12 +44,12 @@ CREATE TABLE `auth` (
 --
 
 CREATE TABLE `lostpass` (
-  `resetid` int NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `hash` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `resetid` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `hash` varchar(255) NOT NULL,
   `when` datetime NOT NULL,
-  `IP` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `IP` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -58,13 +58,14 @@ CREATE TABLE `lostpass` (
 --
 
 CREATE TABLE `pastes` (
-  `uid` int NOT NULL COMMENT 'uid (from auth table)',
-  `link` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `paste` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'paste string to 1k',
+  `uid` int(11) NOT NULL COMMENT 'uid (from auth table)',
+  `link` varchar(255) NOT NULL,
+  `paste` text NOT NULL COMMENT 'paste string to 1k',
   `expiry` datetime DEFAULT NULL COMMENT 'paste expiry date',
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'paste title',
-  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'password, if any (for the paste)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `title` varchar(255) DEFAULT NULL COMMENT 'paste title',
+  `password` varchar(255) DEFAULT NULL COMMENT 'password, if any (for the paste)',
+  `views` int(11) NOT NULL COMMENT 'number of views'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -95,13 +96,13 @@ ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `uid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lostpass`
 --
 ALTER TABLE `lostpass`
-  MODIFY `resetid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `resetid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
