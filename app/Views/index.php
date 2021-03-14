@@ -37,67 +37,14 @@
 				</ul>
 			</div>
 			<div class="d-flex">
-				<button class="btn btn-success" type="button">Login</button>
-				<button class="btn btn-primary" type="button">Register</button>
+				<button class="btn btn-success" type="button" onclick="location.href='./login'">Login</button>
+				<button class="btn btn-primary" type="button" onclick="location.href='./register'">Register</button>
+
 			</div>
 		</div>
 	</nav>
 	<div class="paste-form">
 		<h1 class="paste__heading">New Paste</h1>
-		<!-- <form action="Form_reader/getPOSTinput" method="post">
-			<div class="col-10">
-				<textarea class="form-control" id="paste-text"></textarea>
-			</div>
-			<br>
-			<div>
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="dropdown">
-								<label class="form-check-label">Paste expiration</label>
-								<button class="btn btn-secondary dropdown-toggle" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									Never
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									<li><a class="dropdown-item" href="#">Burn after read</a></li>
-									<li><button class="dropdown-item" type="button">Action</button></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="burn-after-read">
-									<label class="form-check-label" for="burn-after-read">
-										Burn after read?
-									</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="password">
-									<label class="form-check-label" for="password">
-										Password?
-									</label>
-									<div class="form-group col-md-3">
-										<div class="w-50">
-											<label for="inputPassword2" class="visually-hidden">Password</label>
-											<input class="form-control" hidden id="inputPassword2" placeholder="Password">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<button type="submit" id="paste__submit" class="btn btn-success">Submit</button>
-				</div>
-			</div>
-		</form> -->
 		<?= form_open('paste', 'onsubmit="validate()"') ?>
 		<div class="col-10">
 			<textarea class="form-control" name="paste_content" id="paste-text" oninput="validate()"></textarea>
@@ -111,15 +58,6 @@
 						<div class="dropdown">
 							<br>
 							<label class="form-check-label">Paste expiration</label>
-							<!-- <button class="btn btn-secondary dropdown-toggle" onclick="getOption()" value="Never" id="expiry" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-								Never
-							</button> -->
-							<!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> -->
-							<!-- <li><a class="dropdown-item" href="#">Burn after read</a></li>
-								<li><button class="dropdown-item" type="button">Action</button></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li> -->
-							<!-- TODO: FIX DROPDOWN MENU -->
-							<!-- </ul> -->
 							<?php
 							$options = [
 								'never' => 'Never',
@@ -155,37 +93,54 @@
 								</div>
 							</div>
 							<br>
-							<div class="form-check">
-								<input class="form-check-input" checked type="checkbox" value="" id="burn-after-read">
+							<div class="custom-control custom-checkbox">
+								<!-- <div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="burn-after-read" checked>
+									<label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+								</div> -->
+								<!-- <input class="form-check-input" checked type="checkbox" value="" id="burn-after-read"> -->
+								<!-- <input type="checkbox" class="custom-control-input" id="burn-after-read">
 								<label class="form-check-label" for="burn-after-read">
 									Burn after read?
-								</label>
+								</label> -->
+								<input type="checkbox" checked class="custom-control-input" id="burn-after-read">
+								<label class="custom-control-label" for="burn-after-read">Burn after read?</label>
 							</div>
-							<div class="form-check">
+							<!-- <div class="form-check">
 								<input class="form-check-input" type="checkbox" value="" id="password">
 								<label class="form-check-label" for="password">
 									Password?
-								</label>
-								<div class="form-group col-md-3">
-									<div class="w-50">
-										<label for="inputPassword2" class="visually-hidden">Password</label>
-										<input class="form-control" hidden id="inputPassword2" name="password" value="">
-									</div>
+								</label> -->
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="password">
+								<label class="custom-control-label" for="password">Password?</label>
+							</div>
+							<div class="form-group col-md-3">
+								<div class="w-50">
+									<input class="form-control" hidden id="inputPassword2" name="password" value="">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br>
+				<!-- <div class="text-center"> -->
 				<button id="paste__submit" name="submit" type="submit" value="Submit" disabled class="btn btn-success">Submit</button>
+				<!-- </div> -->
 			</div>
 			<br>
+			<?= form_close() ?>
 			<br>
 		</div>
-		<?= form_close() ?>
-
 		<br>
 	</div>
+	<footer class="bg-light text-center text-lg-start">
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright:
+			<p>pryv8bin - made with ❤️ by <a class="text-dark" href="https://pryv8.org"> pryv8</a></p>
+		</div>
+		<!-- Copyright -->
+	</footer>
 	<script>
 		function init() {
 			document.getElementById("paste-text").focus();
