@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->add('/error', 'Index::error');
 $routes->add('pastes/(:any)', 'Pastes::view/$1');
 // $routes->add('/index.php', 'Home::index');
 // $routes->add('pastes/docs', '/docs');
