@@ -64,6 +64,34 @@ function uncheck() {
     }
 }
 
+
+function viewPassword(ele, id) {
+    let cb = document.getElementById(id);
+    let field = document.getElementById(ele);
+    if(cb.checked) {
+        field.type = 'text';
+    }
+    else {
+        field.type = 'password';
+    }
+}
+
+function matchPasswords() {
+    let pw = document.getElementById('password');
+    let cpw = document.getElementById('c-password');
+    let sumbitButton = document.getElementById("submit");
+    if(cpw.value !== pw.value) {
+        cpw.style.borderColor = 'red';
+        cpw.style.boxShadow = "0 0 0 0.15rem red";
+        sumbitButton.setAttribute("disabled", "");
+    }
+    else {
+        cpw.style.borderColor = 'green';
+        cpw.style.boxShadow = "0 0 0 0.15rem green";
+        sumbitButton.removeAttribute("disabled");
+    }
+
+}
 // function populateList() {
 //     const optionsList = [
 //         "Burn after read",
