@@ -37,9 +37,8 @@
 				</ul>
 			</div>
 			<div class="d-flex">
-				<button class="btn btn-success" type="button" onclick="location.href='./login'">Login</button>
-				<button class="btn btn-primary" type="button" onclick="location.href='./register'">Register</button>
-
+				<button class="btn btn-success" type="button" onclick="location.href='/users/login'">Login</button>
+				<button class="btn btn-primary" type="button" onclick="location.href='/users/register'">Register</button>
 			</div>
 		</div>
 	</nav>

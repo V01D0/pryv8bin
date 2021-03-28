@@ -78,7 +78,7 @@ function viewPassword(ele, id) {
 
 function matchPasswords() {
     let pw = document.getElementById('password');
-    let cpw = document.getElementById('c-password');
+    let cpw = document.getElementById('confirm-password');
     let sumbitButton = document.getElementById("submit");
     if(cpw.value !== pw.value) {
         cpw.style.borderColor = 'red';

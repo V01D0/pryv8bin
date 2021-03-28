@@ -6,6 +6,7 @@
     <meta name="description" content="Self-hosted pastebin alternative">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= link_tag('css/style.css', 'stylesheet') ?>
+    <?= script_tag('js/index.js') ?>
     <?= script_tag('bootstrap/dist/js/bootstrap.bundle.js') ?>
     <?= link_tag('bootstrap/dist/css/bootstrap.min.css', 'stylesheet') ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon') ?>
@@ -27,11 +28,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="./docs">API</a>
+                            <a class="nav-link" href="../docs">API</a>
                             <!-- NOT USING VIEW ^^^ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./faq">FAQ</a>
+                            <a class="nav-link" href="../faq">FAQ</a>
                             <!-- NOT USING VIEW ^^^ -->
                         </li>
                     </ul>
