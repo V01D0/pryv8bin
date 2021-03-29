@@ -15,13 +15,12 @@ class Paste extends Home
     {
         //INITIATE DATABASE CONNECTION
         $db = db_connect();
-        //CREATE MODEL VARIABL
+        //CREATE MODEL VARIABLE
         $model = new paste_new($db);
         // $model = \model('App\Models\paste_new');
         $request = service('request');
         $pasteVars = $request->getPost();
-        if (!$request->getPost('submit') && $request->getPost('submit') != 'Submit') {
-            echo "ERROR";
+        if ($pasteVars['submit'] !== 'Submit') {
             return view('error');
         }
         // echo $pasteVars['expiry'];
