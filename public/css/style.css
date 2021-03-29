@@ -139,3 +139,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.dropdown,
+.dropdown > a,
+.dropdown > a:hover {
+  list-style-type: none;
+  color: black;
+}
