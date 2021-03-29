@@ -6,14 +6,15 @@
 	<title>Pryv8bin</title>
 	<meta name="description" content="Self-hosted pastebin alternative">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-	<link rel="manifest" href="/icons/site.webmanifest">
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-	<script src="/bootstrap/dist/js/bootstrap.bundle.js"></script>
-	<script src="/js/index.js"></script>
+	<?= link_tag('css/style.css', 'stylesheet') ?>
+    <?= script_tag('js/index.js') ?>
+    <?= script_tag('bootstrap/dist/js/bootstrap.bundle.js') ?>
+    <?= link_tag('bootstrap/dist/css/bootstrap.min.css', 'stylesheet') ?>
+    <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon') ?>
+    <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon', 'image/png') ?>
+    <?= link_tag('icons/favicon-32x32.png', 'icon', 'image/png') ?>
+    <?= link_tag('icons/favicon-16x16.png', 'icon', 'image/png') ?>
+    <?= link_tag('icons/site.webmanifest', 'manifest') ?>
 </head>
 
 <body>
