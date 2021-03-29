@@ -36,10 +36,42 @@
 					</li>
 				</ul>
 			</div>
-			<div class="d-flex">
-				<button class="btn btn-success" type="button" onclick="location.href='/users/login'">Login</button>
-				<button class="btn btn-primary" type="button" onclick="location.href='/users/register'">Register</button>
-			</div>
+			<!-- <div class="d-flex"> -->
+				<?php if(!session()->has('loggedin'))
+				{
+					?>
+					<!-- <button class="btn btn-success" type="button" onclick="location.href='/users/login'">Login</button>
+					<button class="btn btn-primary" type="button" onclick="location.href='/users/register'">Register</button> -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> LOL<?= session('username') ?> </a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><a class="dropdown-item" href="#">Settings</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="#">Logout</a></li>
+						</ul>
+               		</li>	
+				<?php
+				}
+				else
+				{ ?>
+				    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="#">Item</a></li>
+							<li><a class="dropdown-item" href="#">Item</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="#">Item</a></li>
+						</ul>
+               		</li>					
+				<?php
+				}
+				?>
+			<!-- </div> -->
 		</div>
 	</nav>
 	<div class="paste-form">

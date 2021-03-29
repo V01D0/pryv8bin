@@ -4,9 +4,9 @@
             <div class="container">
                 <h3>Login</h3>
                 <hr>
-                <?php if (session()->get('success')) : ?>
+                <?php if (session()->get('loggedin')) : ?>
                     <div class="alert alert-success" role="alert">
-                        <?= session()->get('success') ?>
+                        <?= session()->get('loggedin') ?>
                     </div>
                 <?php endif; ?>
                 <div class="container box">
