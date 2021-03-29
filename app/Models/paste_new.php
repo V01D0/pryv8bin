@@ -4,7 +4,9 @@
 
     use CodeIgniter\Database\ConnectionInterface;
 
-    class paste_new
+use function PHPUnit\Framework\isNull;
+
+class paste_new
     {
         function __construct(ConnectionInterface &$db)
         {
@@ -99,6 +101,7 @@
             $expiry = $attributes['expiry'];
             $title = empty($attributes['title']) ? NULL : $attributes['title'];
             $password = empty($attributes['password']) ? NULL : password_hash($attributes['password'],  PASSWORD_ARGON2ID);
+            $uid = isNull(session()->get('uid')) ? 0 : session()->get('uid');
             // $paste = $this->db->real_escape_string($_POST['paste']);
             // $paste = $this->db->real_escape_string($this->input->post);
             if (empty($paste)) {
@@ -110,9 +113,9 @@
                 if (strlen($paste) >= 1024) {
                     //IF PASTE IS MORE THAN 1KB
                     $paste_ = substr($paste, 1024, strlen($paste));
-                    $this->storePaste(0, $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
+                    $this->storePaste($uid, $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
                 } else
-                    return $this->storePaste(0, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
+                    return $this->storePaste($uid, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
             }
         }
 
