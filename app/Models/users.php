@@ -17,16 +17,16 @@
 			switch($type)
 			{
 				case 1:
-					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("just signed up with bin.pryv8.org")."\n\n";
+					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("just signed up with paste.pryv8.org")."\n\n";
 					$body .= _("Please click on the following URL to confirm your email address:")."\n\n";
-					$body .= "https:/"."/pryv8.org/bin/verify.php?hash=$hash&uid=$id\n\n";
+					$body .= "https:/"."/paste.pryv8.org/verify.php?hash=$hash&uid=$id\n\n";
 					mail($email, "[Pryv8bin]: "._("Email Verification Check"), $body, "From: noreply@pryv8.org\nReturn-Path: noreply@pryv8.org","-f noreply@pryv8.org");
 					break;
 
 				case 2:
-					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("requested to reset your password on bin.pryv8.org")."\n\n";
+					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("requested to reset your password on paste.pryv8.org")."\n\n";
 					$body .= _("Please click on the following URL to reset your password:")."\n\n";
-					$body .= "https:/"."/pryv8.org/bin/reset.php?hash=$hash&uid=$id\n\n";
+					$body .= "https:/"."/paste.pryv8.org/reset.php?hash=$hash&uid=$id\n\n";
 					mail($email, "[Pryv8bin]: "._("Password Reset"), $body, "From: noreply@pryv8.org\nReturn-Path: noreply@pryv8.org","-f noreply@pryv8.org");
 					break;
 				
