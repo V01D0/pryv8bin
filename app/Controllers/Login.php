@@ -19,6 +19,8 @@
 				'email' => ['label' => 'Email', 'rules' => 'required|valid_email'],
 				'password' => ['label' => 'Password', 'rules' => 'required']
 			]);
+			if(session()->get('loggedin'))
+				return redirect('/');
 			if(!$valid)
 			{
 				echo view('templates/header');
@@ -42,7 +44,7 @@
 				$session->set('username',$username);
 				$session->set('uid', $model->getUID($email));
 				$session->set('loggedin',1);
-				redirect('/');
+				return redirect('/');
 			}
 			else
 			{
