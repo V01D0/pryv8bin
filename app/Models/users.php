@@ -41,7 +41,7 @@
 			if($query->getNumRows() <= 0)
 				return false;
 			$builder = $this->db->table("auth");
-			$query = $this->db->query("UPDATE `users` SET `hash`=NULL WHERE `uid`=$uid");
+			$query = $this->db->query("UPDATE `auth` SET `hash`=NULL WHERE `uid`=$uid");
 			return true;
 		}
 
