@@ -20,6 +20,8 @@
                 echo view('login');
                 echo view('templates/footer', $data);
             }
+            else
+                return redirect("/");
 
         }
         public function register()
