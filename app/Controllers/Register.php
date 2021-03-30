@@ -19,6 +19,8 @@
 				'password' => ['label'=> 'Password', 'rules' => 'required|min_length[8]'],
 				'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
 			]);
+			if(session()->get('loggedin'))
+				return redirect('/');
 			if(!$valid)
 			{
 				echo view('templates/header');
