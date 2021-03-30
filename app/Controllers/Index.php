@@ -18,6 +18,8 @@
         public function login()
         {
             $data = [];
+            if(session()->get('loggedin'))
+                return redirect('/');
             echo view('templates/header', $data);
             echo view('login');
             echo view('templates/footer', $data);
@@ -25,6 +27,8 @@
         public function register()
         {
             $data = [];
+            if(session()->get('loggedin'))
+                return redirect('/');
             echo view('templates/header', $data);
             echo view('register');
             echo view('templates/footer', $data);
