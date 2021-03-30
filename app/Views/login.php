@@ -10,7 +10,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="container box">
-                <?= form_open('login') ?>
+                <?= form_open('users.php/login') ?>
                         <div class="form-group">
                             <label for="email">Email address</label>
                             <?= form_input('email', '', 'id="email" class="form-control"', 'email') ?>
