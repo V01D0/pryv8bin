@@ -41,7 +41,7 @@
                                 <a href="/forgot">Forgot password?</a>
                             </div>
                         </div>
-                    </form>
+                    <?=form_close();?>
                 </div>
             </div>
         </div>
