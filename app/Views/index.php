@@ -49,7 +49,7 @@
 				else
 				{ ?>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> LOL<?= session('username') ?> </a>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= session('username') ?> </a>
 						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
 							<li><a class="dropdown-item" href="#">Profile</a></li>
 							<li><a class="dropdown-item" href="#">Settings</a></li>

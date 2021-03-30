@@ -73,7 +73,7 @@
 			if($query->getNumRows() <= 0)
 				return false;
 			$result = $query->getResultArray();
-			if(password_verify($password, $result))
+			if(password_verify($password, $result[0]['password']))
 				return true;
 			return false;
 		}
@@ -81,14 +81,14 @@
 		function getUsername($email)
 		{
 			$query = $this->db->query("SELECT `username` FROM `auth` WHERE `email`='$email'");
-			$result = $this->db->getResultArray($query);
-			return $result['username'];
+			$result = $query->getResultArray();
+			return $result[0]['username'];
 		}
 
 		function getUID($email)
 		{
 			$query = $this->db->query("SELECT `uid` FROM `auth` WHERE `email`='$email'");
-			$result = $this->db->getResultArray($query);
-			return $result['uid'];
+			$result = $query->getResultArray();
+			return $result[0]['uid'];
 		}
 	}
