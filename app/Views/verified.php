@@ -20,7 +20,7 @@
 	    </h3>
 		<br>
 		<a href="/users/login"
-        ><button class="pure-button pure-button-primary">
+        ><button class="btn btn-primary">
           Proceed to login
         </button></a
       >

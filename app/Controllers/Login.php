@@ -42,7 +42,7 @@
 				$session->set('username',$username);
 				$session->set('uid', $model->getUID($email));
 				$session->set('loggedin',1);
-				redirect('/');
+				redirect('Index');
 			}
 			else
 			{

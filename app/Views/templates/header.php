@@ -45,7 +45,22 @@
 					<button class="btn btn-primary" type="button" onclick="location.href='/users/register'">Register</button>
 				<?php
 				}
-				?>
+				else
+				{ ?>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= session('username') ?> </a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><a class="dropdown-item" href="#">Settings</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="#">Logout</a></li>
+						</ul>
+               		</li>					
+				<?php
+				}
+                ?>
 			</div>
             </div>
         </nav>
