@@ -41,8 +41,8 @@
 				<?php if(!session()->has('loggedin'))
 				{
 					?>
-					<button class="btn btn-success" type="button" onclick="location.href='/users/login'">Login</button>
-					<button class="btn btn-primary" type="button" onclick="location.href='/users/register'">Register</button>
+					<button class="btn btn-success" type="button" onclick="location.href='/index/login'">Login</button>
+					<button class="btn btn-primary" type="button" onclick="location.href='/index/register'">Register</button>
 				<?php
 				}
 				else
@@ -55,7 +55,7 @@
 							<li>
 								<hr class="dropdown-divider">
 							</li>
-							<li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+							<li><a class="dropdown-item" href="/logout">Logout</a></li>
 						</ul>
                		</li>					
 				<?php
