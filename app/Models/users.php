@@ -73,7 +73,7 @@
 			if($query->getNumRows() <= 0)
 				return false;
 			$result = $query->getResultArray();
-			if(password_verify($password, $result['password']))
+			if(password_verify($password, $result))
 				return true;
 			return false;
 		}
