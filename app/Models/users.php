@@ -37,7 +37,7 @@
 
 		function verify($hash, $uid)
 		{
-			$query = $this->db->query("SELECT 1 FROM `auth` WHERE `hash`='$hash' AND `uid`=$uid");
+			$query = $this->db->query("SELECT 1 FROM `auth` WHERE `hash`='$hash' AND `uid`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
 			$builder = $this->db->table("auth");
