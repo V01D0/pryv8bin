@@ -36,4 +36,10 @@
             else
                 return redirect("/");
         }
+
+        public function logout()
+        {
+            session()->destroy();
+            return redirect("/");
+        }
     }
