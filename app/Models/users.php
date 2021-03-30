@@ -72,7 +72,7 @@
 			$query = $this->db->query("SELECT `password` FROM `auth` WHERE `email`='$email'");
 			if($query->getNumRows() <= 0)
 				return false;
-			$result = $this->db->getResultArray($query);
+			$result = $query->getResultArray();
 			if(password_verify($password, $result['password']))
 				return true;
 			return false;

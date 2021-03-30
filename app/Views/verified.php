@@ -19,7 +19,7 @@
 			You've been verified!
 	    </h3>
 		<br>
-		<a href="/users/login.php"
+		<a href="/users/login"
         ><button class="pure-button pure-button-primary">
           Proceed to login
         </button></a
