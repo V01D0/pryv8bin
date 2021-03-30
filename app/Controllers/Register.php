@@ -36,7 +36,9 @@
 			$email = $creds['email'];
 			$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
 			$model->registerUser($email, $password);
-			return view('mailsent');
+			echo view('templates/header');
+			echo view('mailsent');
+			return view('templates/footer');
 		}
 		
 	}

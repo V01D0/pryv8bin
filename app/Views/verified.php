@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,18 +9,24 @@
     <?= link_tag('icons/favicon-32x32.png', 'icon', 'image/png') ?>
     <?= link_tag('icons/favicon-16x16.png', 'icon', 'image/png') ?>
     <?= link_tag('icons/site.webmanifest', 'manifest') ?>
-    <title>Signed up!</title>
+    <title>You're verified!</title>
   </head>
 
   <body>
     <section>
       <div class="d-flex justify-content-center">
-        <h3 class="is-center">
-          Please check your email, we have sent you a verification link.
-        </h3>
+        <h3>
+			You've been verified!
+	    </h3>
+		<br>
+		<a href="/users/login.php"
+        ><button class="pure-button pure-button-primary">
+          Proceed to login
+        </button></a
+      >
       </div>
       <div class="d-flex justify-content-center">
-        <?= img('images/undraw_Letter.svg')?>
+        <?= img('images/undraw_Verified.svg')?>
     </div>
     </section>
   </body>
