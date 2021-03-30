@@ -22,8 +22,8 @@
             }
             else
                 return redirect("/");
-
         }
+
         public function register()
         {
             $data = [];
