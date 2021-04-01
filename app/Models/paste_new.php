@@ -112,16 +112,18 @@
             else
             {
                 $expiry = $this->getExpiry($expiry);
+                $link = $this->generateLink();
                 //IF PASTE IS NOT EMPTY
                 if (strlen($paste) >= 1024)
                 {
                     //IF PASTE IS MORE THAN 1KB
                     $paste_ = substr($paste, 1024, strlen($paste));
-                    $this->storePaste($uid, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, $paste_);
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $title, $password, $paste_);
                 } 
                 else
-                    return $this->storePaste($uid, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $title, $password, "");
             }
+            return $link;
         }
 
         //SERVER SIDE - WRITING PASTE TO DB
