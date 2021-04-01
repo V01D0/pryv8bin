@@ -41,8 +41,8 @@
 				<?php if(!session()->has('loggedin'))
 				{
 					?>
-					<button class="btn btn-success" type="button" onclick="location.href='/index/login'">Login</button>
-					<button class="btn btn-primary" type="button" onclick="location.href='/index/register'">Register</button>
+					<button class="btn btn-success" type="button" onclick="location.href='/login'">Login</button>
+					<button class="btn btn-primary" type="button" onclick="location.href='/register'">Register</button>
 				<?php
 				}
 				else

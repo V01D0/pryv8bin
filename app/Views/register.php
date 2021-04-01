@@ -44,11 +44,11 @@
                             <button id="submit" name="submit" value="Submit" type="submit" class="btn btn-primary">Register</button>
                         </div>
                         <div class="col-12 col-sm-8 text-right">
-                            <a href="/index/login">Already have an account? Login!</a>
+                            <a href="/login">Already have an account? Login!</a>
                             <br>
                         </div>
                     </div>
-                </form>
+                <?=form_close();?>
             </div>
         </div>
     </div>

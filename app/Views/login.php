@@ -28,6 +28,8 @@
                             <div class="col-12">
                                 <div class="alert alert-danger" role="alert">
                                     <?= $validation->listErrors() ?>
+                                    <? if(empty($validation)) ?>
+                                    <?= "Invalid E-mail or Password"?>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -36,7 +38,7 @@
                                 <button value="Submit" name="submit" type="submit" class="btn btn-primary">Login</button>
                             </div>
                             <div class="col-12 col-sm-8 text-right">
-                                <a href="/index/register">Don't have an account yet? Register now!</a>
+                                <a href="/register">Don't have an account yet? Register now!</a>
                                 <br>
                                 <a href="/forgot">Forgot password?</a>
                             </div>
