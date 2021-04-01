@@ -20,7 +20,8 @@ class Paste extends Home
         // $model = \model('App\Models\paste_new');
         $request = service('request');
         $pasteVars = $request->getPost();
-        if ($pasteVars['submit'] !== 'Submit') {
+        if ($pasteVars['submit'] !== 'Submit')
+        {
             return view('error');
         }
         // echo $pasteVars['expiry'];
@@ -32,9 +33,10 @@ class Paste extends Home
         // }
         // echo $ex;
 
-        $model->parsePaste($pasteVars);
+        $link = $model->parsePaste($pasteVars);
         // return view('result');
         // $model->parsePaste($pasteVars);
+        return redirect()->to("p/$link");
     }
 
     public function view($page = 'index')
