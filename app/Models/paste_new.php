@@ -1,12 +1,10 @@
 <?php
 
     namespace App\Models;
-
     use CodeIgniter\Database\ConnectionInterface;
+    use function PHPUnit\Framework\isNull;
 
-use function PHPUnit\Framework\isNull;
-
-class paste_new
+    class paste_new
     {
         function __construct(ConnectionInterface &$db)
         {
@@ -16,7 +14,7 @@ class paste_new
         }
 
         //CHECK IF GENERATED LINK EXISTS IN DB
-        protected function isNameInDB($link)
+        function isNameInDB($link)
         {
             // $sql = "SELECT 1 FROM `pastes` WHERE `link`=`$link`";
             // if ($builder) {
@@ -34,7 +32,7 @@ class paste_new
         }
 
         //FUNCTION THAT GENERATES A RANDOM STRING (LINK)
-        protected function generateLink()
+        function generateLink()
         {
             $arr = array(
                 "assets/adjectives.txt" => 1347,
@@ -43,7 +41,8 @@ class paste_new
             );
             //adjective+verb+animal
             $link = "";
-            foreach ($arr as $file => $lines) {
+            foreach ($arr as $file => $lines)
+            {
                 // echo "$file " . "$lines" . "\n";
                 $line = mt_rand(0, $lines);
                 $file = new \SplFileObject("$file");
@@ -55,17 +54,19 @@ class paste_new
             // $link = str_replace('\n', '', $link);
             $arr = null;
             $file = null;
-            if ($this->isNameInDB($link)) {
+            if ($this->isNameInDB($link))
+            {
                 $this->generateLink();
             }
-            return $link;
+            return strtolower($link);
         }
 
         //FUNCTION TO GENERATE SQL QUERY FOR RESPECTIVE DATE
-        public function getExpiry($expiry)
+        function getExpiry($expiry)
         {
 
-            switch ($expiry) {
+            switch ($expiry)
+            {
                 case "m10":
                     $query = $this->db->query("SELECT NOW() + INTERVAL 10 MINUTE");
                     break;
@@ -95,7 +96,7 @@ class paste_new
         }
 
         //FUNCTION TO PARSE THE PASTE ON THE SERVER SIDE
-        public function parsePaste(array $attributes)
+        function parsePaste(array $attributes)
         {
             $paste = $attributes['paste_content'];
             $expiry = $attributes['expiry'];
@@ -104,36 +105,44 @@ class paste_new
             $uid = isNull(session()->get('uid')) ? 0 : session()->get('uid');
             // $paste = $this->db->real_escape_string($_POST['paste']);
             // $paste = $this->db->real_escape_string($this->input->post);
-            if (empty($paste)) {
+            if (empty($paste))
                 //IF PASTE IS EMPTY
                 return view('error');
-            } else {
+
+            else
+            {
                 $expiry = $this->getExpiry($expiry);
                 //IF PASTE IS NOT EMPTY
-                if (strlen($paste) >= 1024) {
+                if (strlen($paste) >= 1024)
+                {
                     //IF PASTE IS MORE THAN 1KB
                     $paste_ = substr($paste, 1024, strlen($paste));
-                    $this->storePaste($uid, $this->generateLink(), substr($paste, 1024, 1024), $expiry, $title, $password, $paste_);
-                } else
+                    $this->storePaste($uid, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, $paste_);
+                } 
+                else
                     return $this->storePaste($uid, $this->generateLink(), substr($paste, 0, 1024), $expiry, $title, $password, "");
             }
         }
 
         //SERVER SIDE - WRITING PASTE TO DB
-        public function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
+        function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
         {
             //CHECK IF PASTE IS MORE THAN 1KB, IF SO WRITE EXTRA TO txt FILE
-            if (trim($paste_) != "") {
-                if (!write_file(WRITEPATH . '/' . $link . '.txt', $paste_)) {
+            if (trim($paste_) != "")
+            {
+                if (!write_file(WRITEPATH . '/' . $link . '.txt', $paste_))
+                {
                     return view('error');
                 }
             }
             //IF EXPIRY IS NULL, $ex BECOMES NULL.
             $ex =  is_null($expiry) ? NULL : $expiry;
-            if (!is_null($ex)) {
+            if (!is_null($ex))
+            {
                 //  CONVERTING stdClass OBJECT TO JSON TO CONVERT TO STRING (HACKY??)
                 $ex = json_decode(json_encode($ex), true);
-                foreach ($ex as $key => $value) {
+                foreach ($ex as $key => $value)
+                {
                     $ex = $value;
                 }
             }
@@ -145,12 +154,7 @@ class paste_new
                 'title' => $title,
                 'password' => $password
             ];
-            // $this->db->table->set('expiry', $expiry, false);
             $this->db->table('pastes')
                 ->insert($data);
-            // } else {
-            //     $this->db->table->set('expiry', "NOW()", FALSE);
-            // }
-            // $sql = "INSERT INTO `pastes` VALUES ($uid, $link, $paste, $expiry, $title, $password)";
         }
     }

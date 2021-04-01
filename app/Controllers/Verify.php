@@ -1,9 +1,7 @@
 <?php
 
 	namespace App\Controllers;
-
 	use App\Models\users;
-
 
 	class Verify extends Home
 	{
