@@ -26,19 +26,27 @@
                 $model = new view_paste($db);
 				$res = $model->getPaste($link);
 				if(!$res)
-				{
 					throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-				}
+				
 				else
 				{
 					echo view("templates/header");
-					$isLarge = $model->isLarge($link);
-					if($isLarge)
+
+					if($model->hasPassword($link))
+					{
+						echo view("askpass", [
+							'link'=> $link
+						]);
+						return view("templates/footer");
+					}
+
+					if($model->isLarge($link))
 						$res .= file_get_contents(WRITEPATH . $link . '.txt');
+					
 					echo view("result", [
 						'paste' => $res
 					]);
-					echo view("templates/footer");
+					return view("templates/footer");
 				}
             }
         }
