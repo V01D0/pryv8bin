@@ -19,7 +19,7 @@
             {
 				if($uri->getTotalSegments()>2)
 				{
-					throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+					return redirect("/");
 				}
                 $link = trim(strtolower($uri->getSegment(2)));
                 $db = db_connect();
