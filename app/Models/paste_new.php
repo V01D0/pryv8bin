@@ -132,11 +132,13 @@
             //CHECK IF PASTE IS MORE THAN 1KB, IF SO WRITE EXTRA TO txt FILE
             if (trim($paste_) != "")
             {
+                $large = 1;
                 if (!write_file(WRITEPATH . '/' . $link . '.txt', $paste_))
                 {
                     return view('error');
                 }
             }
+            $large = isset($large) ? $large : 0;
             //IF EXPIRY IS NULL, $ex BECOMES NULL.
             $ex =  is_null($expiry) ? NULL : $expiry;
             if (!is_null($ex))
@@ -154,7 +156,8 @@
                 'paste' => $paste,
                 'expiry' => $ex,
                 'title' => $title,
-                'password' => $password
+                'password' => $password,
+                'large' => $large
             ];
             $this->db->table('pastes')
                 ->insert($data);
