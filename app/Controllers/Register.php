@@ -11,16 +11,29 @@
         }
 		function index()
 		{
+			//IF LOGGED IN, REDIRECT
+			if(session()->get('loggedin'))
+				return redirect('/');
 			//INITIATE DATABASE CONNECTION
 			$db = db_connect();
-			//CREATE MODEL VARIABLE
+			$request = service('request');
+			$creds = $request->getPost();
+
+			if(!isset($creds['submit']) || $creds['submit'] !== 'Submit')
+			{
+				echo view('templates/header');
+				echo view('register');
+				return view('templates/footer');
+			}
+
+			//CHECK IF INPUT IS VALID
 			$valid = $this->validate([
 				'email' => ['label' => 'Email', 'rules' => 'required|valid_email|is_unique[auth.email]'],
 				'password' => ['label'=> 'Password', 'rules' => 'required|min_length[8]'],
 				'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
 			]);
-			if(session()->get('loggedin'))
-				return redirect('/');
+
+			//IF NOT
 			if(!$valid)
 			{
 				echo view('templates/header');
@@ -29,11 +42,8 @@
 				]);
 				return view('templates/footer');
 			}
-			$request = service('request');
-			$creds = $request->getPost();
-			if ($creds['submit'] !== 'Submit')
-				return view('error');
-			
+
+			//CREATE USERS MODEL OBJECT
 			$model = new users($db);
 			$email = $creds['email'];
 			$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);

@@ -13,12 +13,23 @@
 
 		function index()
 		{
+			//CREATE REQUEST OBJECT
+			$request = service('request');
 			//INITIATE DATABASE CONNECTION
 			$db = db_connect();
+			$creds = $request->getPost();
+			if(!isset($creds['submit']) || $creds['submit'] !== 'Submit')
+			{
+				echo view('templates/header');
+				echo view('login');
+				return view('templates/footer');
+			}
+
 			$valid = $this->validate([
 				'email' => ['label' => 'Email', 'rules' => 'required|valid_email'],
 				'password' => ['label' => 'Password', 'rules' => 'required']
 			]);
+			
 			if(session()->get('loggedin'))
 				return redirect('/');
 			if(!$valid)
@@ -29,10 +40,6 @@
 				]);
 				return view('templates/footer');
 			}
-			$request = service('request');
-			$creds = $request->getPost();
-			if($creds['submit'] !== 'Submit')
-				return view('error');
 			
 			$model = new users($db);
 			$email = $creds['email'];
@@ -50,7 +57,7 @@
 			{
 				echo view('templates/header');
 				echo view('login',[
-					'validation' => "Incorrect email or password!"
+					'validation' => $this->validator
 				]);
 				return view('templates/footer');
 			}
