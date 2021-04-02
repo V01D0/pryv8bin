@@ -32,7 +32,7 @@
 				{
 					echo view("templates/header");
 
-					if($model->hasPassword($link))
+					if($model->hasPassword($link) && is_null(session()->get($link)))
 					{
 						echo view("askpass", [
 							'link'=> $link
@@ -43,7 +43,9 @@
 					if($model->isLarge($link))
 						$res .= file_get_contents(WRITEPATH . $link . '.txt');
 					
+					$title = !$model->getTitle($link) ? "Untitled paste" : $model->getTitle($link);
 					echo view("result", [
+						'title' => $title,
 						'paste' => $res
 					]);
 					return view("templates/footer");

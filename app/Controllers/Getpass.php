@@ -19,18 +19,27 @@
 			$link = $data['link'];
 			$password = $data['password']; 
 			$model = new view_paste($db);
+			// if($model->verifyPassword($link, $password))
+			// {
+			// 	echo view("templates/header");
+			// 	$res = $model->getPaste($link);
+			// 	if($model->isLarge($link))
+			// 		$res .= file_get_contents(WRITEPATH . $link . '.txt');
+			// 	echo view("result", [
+			// 		'paste' => $res
+			// 	]);
+			// 	return view("templates/footer");
+			// }
+			// echo view("templates/header");
+			// echo view("askpass", [
+			// 	'link'=> $link
+			// ]);
+			// return view("templates/footer");
 			if($model->verifyPassword($link, $password))
 			{
-				echo view("templates/header");
-				$res = $model->getPaste($link);
-				if($model->isLarge($link))
-					$res .= file_get_contents(WRITEPATH . $link . '.txt');
-				echo view("result", [
-					'paste' => $res
-				]);
-				return view("templates/footer");
+				session()->set([$link=>true]);
+				return redirect()->to("p/$link");
 			}
-			return view("error");
 		}
 	}
 		
