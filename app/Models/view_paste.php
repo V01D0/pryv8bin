@@ -55,6 +55,4 @@
 			$result = $query->getResultArray();
 			return $result[0]['title'];
 		}
-
-
 	}
