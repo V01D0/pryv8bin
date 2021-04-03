@@ -146,3 +146,7 @@ body {
   list-style-type: none;
   color: black;
 }
+
+.info {
+  padding: 10px;
+}
