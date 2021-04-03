@@ -1,7 +1,9 @@
 <?php
 
     namespace App\Models;
-    use CodeIgniter\Database\ConnectionInterface;
+
+use App\Controllers\P;
+use CodeIgniter\Database\ConnectionInterface;
 
 	class view_paste
 	{
@@ -54,5 +56,32 @@
 				return false;
 			$result = $query->getResultArray();
 			return $result[0]['title'];
+		}
+
+		public function getViews($link)
+		{
+			$query = $this->db->query("SELECT `views` FROM `pastes` WHERE `link`='$link'");
+			$result = $query->getResultArray();
+			return $result[0]['views'];
+		}
+
+		public function updateViews($link)
+		{
+			$sql = "UPDATE `pastes` SET `views`=views+1 WHERE link='$link'";
+			if($this->db->query($sql))
+				return true;
+			else
+				return false;
+		}
+
+		public function getAuthor($link)
+		{
+			$query = $this->db->query("SELECT `uid` FROM `pastes` WHERE `link`='$link'");
+			$result = $query->getResultArray();
+			if($result[0]['uid'] == 0)
+				return "Anonymous";
+			$query = $this->db->query("SELECT `username` FROM `auth` WHERE `uid`=$result[0]['uid']");
+			$result = $query->getResultArray();
+			return $result[0]['username'];
 		}
 	}

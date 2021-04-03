@@ -2,7 +2,12 @@
 <html>
 
 <head>
-    <title>Pryv8bin</title>
+    <?php
+        if(isset($title))
+            echo '<title>'.$title.'</title>';
+        else
+            echo '<title>Pryv8bin</title>';
+    ?>
     <meta name="description" content="Self-hosted pastebin alternative">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= link_tag('css/style.css', 'stylesheet') ?>
