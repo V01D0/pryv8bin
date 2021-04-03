@@ -30,10 +30,9 @@
 				
 				else
 				{
-					echo view("templates/header");
-
 					if($model->hasPassword($link) && is_null(session()->get($link)))
 					{
+						echo view("templates/header");
 						echo view("askpass", [
 							'link'=> $link
 						]);
@@ -44,8 +43,24 @@
 						$res .= file_get_contents(WRITEPATH . $link . '.txt');
 					
 					$title = !$model->getTitle($link) ? "Untitled paste" : $model->getTitle($link);
+					if(!session()->has($link))
+					{
+						$test = $model->updateViews($link);
+					}
+					else
+					{
+						$test = "fu";
+					}
+					session()->set($link, 'visited');
+					$views = $model->getViews($link);
+					$author = $model->getAuthor($link);
+					echo view("templates/header", [
+						'title' => $title
+					]);
 					echo view("result", [
 						'title' => $title,
+						'author' => $author,
+						'views' => $views,
 						'paste' => $res
 					]);
 					return view("templates/footer");
