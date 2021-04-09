@@ -4,7 +4,7 @@
             <div class="container">
                 <h3>Register</h3>
                 <hr>
-                <?php if (session()->get('logged')) : ?>
+                <?php if (session()->get('loggedin')) : ?>
                     <div class="alert alert-success" role="alert">
                         <?= session()->get('loggedin') ?>
                     </div>
