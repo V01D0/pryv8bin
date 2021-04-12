@@ -1,7 +1,6 @@
 <?php
 
     namespace App\Controllers;
-    use App\Models\view_paste;
 
     class Index extends Home
     {
