@@ -13,6 +13,8 @@
 
 		function index()
 		{
+			if(session()->get('loggedin'))
+				return redirect('/');
 			//CREATE REQUEST OBJECT
 			$request = service('request');
 			//INITIATE DATABASE CONNECTION
@@ -30,8 +32,6 @@
 				'password' => ['label' => 'Password', 'rules' => 'required']
 			]);
 			
-			if(session()->get('loggedin'))
-				return redirect('/');
 			if(!$valid)
 			{
 				echo view('templates/header');
