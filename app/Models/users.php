@@ -19,14 +19,14 @@ class users
 				case 1:
 					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("just signed up with paste.pryv8.org")."\n\n";
 					$body .= _("Please click on the following URL to confirm your email address:")."\n\n";
-					$body .= "https:/"."/paste.pryv8.org/verify?hash=$hash&uid=$id\n\n";
+					$body .= "https:/"."/paste.pryv8.org/verify?hash=$hash&uid=$id&t=v\n\n";
 					mail($email, "[Pryv8bin]: "._("Email Verification Check"), $body, "From: noreply@pryv8.org\nReturn-Path: noreply@pryv8.org","-f noreply@pryv8.org");
 					break;
 
 				case 2:
 					$body = ("Hello").",\n\n"._("You, or someone that knows your email address,")."\n"._("requested to reset your password on paste.pryv8.org")."\n\n";
 					$body .= _("Please click on the following URL to reset your password:")."\n\n";
-					$body .= "https:/"."/paste.pryv8.org/reset?hash=$hash&uid=$id\n\n";
+					$body .= "https:/"."/paste.pryv8.org/verify?hash=$hash&uid=$id&t=r\n\n";
 					mail($email, "[Pryv8bin]: "._("Password Reset"), $body, "From: noreply@pryv8.org\nReturn-Path: noreply@pryv8.org","-f noreply@pryv8.org");
 					break;
 				
@@ -35,12 +35,16 @@ class users
 			}
 		}
 
-		public function verify($hash, $uid)
+		public function verify($hash, $uid, $type)
 		{
-			$query = $this->db->query("SELECT 1 FROM `auth` WHERE `hash`='$hash' AND `uid`= $uid");
+			$type = 'v' ? 'auth' : 'lostpass';
+			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `uid`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
-			$query = $this->db->query("UPDATE `auth` SET `hash`=NULL WHERE `uid`=$uid");
+			if($type == 'v')
+				$query = $this->db->query("UPDATE `auth` SET `hash`=NULL WHERE `uid`=$uid");
+			else
+				$query = $this->db->query("DELETE FROM `lostpass` WHERE `hash`='$hash' AND `uid`=$uid");
 			return true;
 		}
 
