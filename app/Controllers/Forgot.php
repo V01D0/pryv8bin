@@ -33,7 +33,7 @@
 			$email = $creds['email'];
 			//CHECK IF INPUT IS VALID
 			$valid = $this->validate([
-				'email' => ['label' => 'Email', 'rules' => "required|valid_email|is_not_unique[auth.email,email, $email]"]
+				'email' => ['label' => 'Email', 'rules' => "required|valid_email|is_not_unique[auth.email]"]
 			]);
 
 			//IF NOT
