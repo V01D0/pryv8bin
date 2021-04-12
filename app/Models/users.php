@@ -2,8 +2,9 @@
 
     namespace App\Models;
     use CodeIgniter\Database\ConnectionInterface;
+use DateTime;
 
-	class users
+class users
 	{
 		function __construct(ConnectionInterface &$db)
         {
@@ -89,4 +90,21 @@
 			$result = $query->getResultArray();
 			return $result[0]['uid'];
 		}
+
+		public function requestReset($email, $ip)
+		{
+			$now = new DateTime();
+			$now = $now->format('Y-m-d H:i:s');
+			$hash = $this->genHash();
+			$data =	["email" => $email,
+				"IP" => $ip,
+				"hash"=> $hash,
+				"when" => $now
+			];
+			$this->db->table('lostpass')
+			->insert($data);
+			$id = $this->db->insertID();
+			$this->sendMail(2, $hash, $id, $email);
+		}
+
 	}
