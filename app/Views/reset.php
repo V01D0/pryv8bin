@@ -8,10 +8,12 @@
                     <?php if (isset($uid)) : ?>
                         <?=form_hidden('uid', $uid); ?>
                     <?php endif; ?>
+                    <?php if (!isset($uid)) : ?>
                         <div class="form-group">
                             <label for="password">Current password</label>
                             <?= form_input('old-password', '', 'id="cur-password" class="form-control"', 'password') ?>
                         </div>
+                    <?php endif; ?>
                         <div class="form-group">
                             <label for="password">New password</label>
                             <?= form_input('password', '', 'id="password" class="form-control"', 'password') ?>
