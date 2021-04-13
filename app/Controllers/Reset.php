@@ -25,6 +25,29 @@
 				return view('templates/footer');
 			}
 
+			//CREATE USERS MODEL OBJECT
+			$model = new users($db);
+			if(isset($creds['uid']))
+			{
+				//CHECK IF INPUT IS VALID
+				$valid = $this->validate([
+					'password' => ['label'=> 'Password', 'rules' => 'required|min_length[8]'],
+					'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
+				]);
+
+				$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
+				$model->changePassword($password, $creds['uid']);
+				echo view('templates/header');
+				echo view('verified', [
+					"text" => "Your password as been reset!"
+				]);
+				return view('templates/footer');
+
+				//IF NOT
+				if(!$valid)
+					return redirect()->back();
+			}
+
 			//CHECK IF INPUT IS VALID
 			$valid = $this->validate([
 				'old-password' => ['label'=> 'Current Password', 'rules' => 'required'],
@@ -40,18 +63,6 @@
 					'validation' => $this->validator
 				]);
 				return view('templates/footer');
-			}
-			//CREATE USERS MODEL OBJECT
-			$model = new users($db);
-			if(isset($creds['uid']))
-			{
-				$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
-				$model->changePassword($password, $creds['uid']);
-				echo view('templates/header');
-				echo view('verified', [
-					"text" => "Your password as been reset!"
-				]);
-            	return view('templates/footer');
 			}
         }
     }
