@@ -21,7 +21,7 @@
 			$request = service('request');
 			$creds = $request->getPost();
 			$ip = $request->getIPAddress();
-			$ip = inet_ntop($ip);
+			$ip = inet_pton($ip);
 
 			if(!isset($creds['submit']) || $creds['submit'] !== 'Submit')
 			{
