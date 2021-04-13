@@ -131,7 +131,7 @@ class users
 
 		public function getEmail($r_id)
 		{
-			$query = $this->db->query("SELECT `email` FROM `auth` WHERE `lostpass`.`$r_id`=`auth`.`$r_id`");
+			$query = $this->db->query("SELECT `email` AS `email` FROM `auth` WHERE `uid` = $r_id");
 			$result = $query->getResultArray();
 			return $result[0]['email'];
 		}
