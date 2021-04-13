@@ -27,7 +27,7 @@
       <?php }?>
 
 		<br>
-		<a href="/users/login"
+		<a href="/login"
         ><button class="btn btn-primary">
           Proceed to login
         </button></a
