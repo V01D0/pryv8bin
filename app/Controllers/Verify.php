@@ -50,9 +50,13 @@
 				if($type == 'v')
 		    		echo view('verified');
 				elseif($type == 'r')
+				{
+					$uid = $model->getUID($model->getEmail($uid));
 					echo view('reset', [
-						"uid"=>$model->getUID($model->getEmail($uid))
+						"uid"=> $uid
 					]);
+				}
+
             	return view('templates/footer');
             }
 			return view('error',[
