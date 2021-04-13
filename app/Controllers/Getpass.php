@@ -15,7 +15,9 @@
 			$db = db_connect();
 			$data = $request->getPost();
 			if(!isset($data['password']))
-				return view('error');
+				return view('error',[
+					"reason" => "Invalid password"
+				]);
 			$link = $data['link'];
 			$password = $data['password']; 
 			$model = new view_paste($db);

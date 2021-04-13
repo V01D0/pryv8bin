@@ -48,11 +48,16 @@
 
 			//CREATE USERS MODEL OBJECT
 			$model = new users($db);
-			$model->requestReset($email, $ip);
-			echo view('templates/header');
-			echo view('mailsent',[
-				"text"=>"If your mail exists in our database, you will receive a reset link in your inbox."
+			if(!$model->requestReset($email, $ip))
+			{			
+				echo view('templates/header');
+				echo view('mailsent',[
+					"text"=>"If your mail exists in our database, you will receive a reset link in your inbox."
+				]);
+				return view('templates/footer');
+			}
+			return view('error', [
+				"reason" => "Too many reset password attempts for this email"
 			]);
-			return view('templates/footer');
 		}
     }
