@@ -99,9 +99,9 @@ class users
 		{
 			$now = new DateTime();
 			$now = $now->format('Y-m-d H:i:s');
-			$query = $this->db->query("SELECT * FROM `auth` WHERE `email`='$email'");
-			if($query->getNumRows() > 5)
-				return false;
+			$query = $this->db->query("SELECT `email` FROM `auth` WHERE `email`='$email'");
+			if($query->getNumRows() <= 0)
+				return;
 
 			$hash = $this->genHash();
 			$data =	["email" => $email,
