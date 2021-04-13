@@ -44,7 +44,7 @@ class users
 			else
 				return false;
 				
-			$query = $this->db->query("SELECT 1 FROM ".`$type`." WHERE `hash`='$hash' AND `uid`= $uid");
+			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `uid`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
 			if($type == 'v')
