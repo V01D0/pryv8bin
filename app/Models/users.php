@@ -136,9 +136,10 @@ class users
 			return $result[0]['email'];
 		}
 
-		// public function changePassword()
-		// {
-		// 	$query = $this->db->query("UPDATE ");
-		// }
+		public function changePassword($password, $uid)
+		{
+			$query = $this->db->query("UPDATE `auth` SET `password`='$password' WHERE `uid`=$uid");
+			$query = $this->db->query("DELETE FROM `lostpass` WHERE `uid`=$uid");
+		}
 
 	}
