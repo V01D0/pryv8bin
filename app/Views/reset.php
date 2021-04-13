@@ -5,9 +5,7 @@
                 <h3>Reset password</h3>
                 <hr>
                 <?= form_open('reset') ?>
-                        <?php if (isset($uid)) : ?>
                             <?= form_hidden('uid', $uid)?>
-                        <?php endif; ?>
                         <div class="form-group">
                             <label for="password">Current password</label>
                             <?= form_input('old-password', '', 'id="cur-password" class="form-control"', 'password') ?>
