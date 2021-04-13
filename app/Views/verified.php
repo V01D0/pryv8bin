@@ -15,9 +15,17 @@
   <body>
     <section>
       <div class="d-flex justify-content-center">
+      <?php if (!isset($text)) {?>
         <h3>
-			You've been verified!
-	    </h3>
+          You've been verified!
+        </h3>
+      <?php }
+      else {?>
+        <h3>
+          <?=$text?>
+        </h3>
+      <?php }?>
+
 		<br>
 		<a href="/users/login"
         ><button class="btn btn-primary">

@@ -1,6 +1,7 @@
 <?php
 
     namespace App\Controllers;
+	use App\Models\users;
 
     class Reset extends Home
     {
@@ -37,6 +38,18 @@
 					'validation' => $this->validator
 				]);
 				return view('templates/footer');
+			}
+			//CREATE USERS MODEL OBJECT
+			$model = new users($db);
+			if(isset($creds['uid']))
+			{
+				$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
+				$model->changePassword($password, $creds['uid']);
+				echo view('templates/header');
+				echo view('verified', [
+					"text" => "Your password as been reset!"
+				]);
+            	return view('templates/footer');
 			}
         }
     }
