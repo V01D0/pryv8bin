@@ -27,6 +27,7 @@
 
 			//CHECK IF INPUT IS VALID
 			$valid = $this->validate([
+				'old-password' => ['label'=> 'Current Password', 'rules' => 'required'],
 				'password' => ['label'=> 'Password', 'rules' => 'required|min_length[8]'],
 				'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
 			]);
