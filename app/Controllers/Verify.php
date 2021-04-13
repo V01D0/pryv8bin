@@ -31,6 +31,7 @@
 			$hash = explode('=',$hash,2);
 			$hash = $hash[1];
 
+			//uid WILL EITHER BE r_id (RESET_ID FOR `lostpass` table) OR VERIFICATION ID (FOR `auth` table)
 			$uid = $uri->getQuery(['only'=>['uid']]);
 			if(empty($uid))
 				return view('error',[
@@ -46,7 +47,12 @@
             if($model->verify($hash, $uid, $type))
             {
             	echo view('templates/header');
-		    	echo view('verified'); 
+				if($type == 'v')
+		    		echo view('verified');
+				elseif($type == 'r')
+					echo view('reset', [
+						"uid"=>$model->getUID($model->getEmail($uid))
+					]);
             	return view('templates/footer');
             }
 			return view('error',[
