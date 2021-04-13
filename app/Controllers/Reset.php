@@ -11,11 +11,12 @@
         }
         public function index()
         {
-			if(!session()->get('loggedin') && !isset($creds['uid']))
-				return redirect('/');
 			$db = db_connect();
 			$request = service('request');
 			$creds = $request->getPost();
+
+			if(!session()->get('loggedin') && !isset($creds['uid']))
+				return redirect('/');
 
 			if(!isset($creds['submit']) || $creds['submit'] !== 'Submit')
 			{
