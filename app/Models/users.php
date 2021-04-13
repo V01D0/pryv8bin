@@ -37,7 +37,13 @@ class users
 
 		public function verify($hash, $uid, $type)
 		{
-			$type = 'v' ? 'auth' : 'lostpass';
+			if($type == 'v')
+				$type = "auth";
+			elseif($type == 'r')
+				$type = "lostpass";
+			else
+				return false;
+				
 			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `uid`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;

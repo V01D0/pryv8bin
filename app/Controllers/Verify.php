@@ -17,7 +17,7 @@
 			$type = strtolower($uri->getQuery(['only'=>['t']]));
 			$type = explode('=',$type,2);
 			$type = $type[1];
-			if(empty($type) || $type != 'v' || $type != 'r')
+			if(empty($type))
 				return view('error',[
 					"reason" => "Unable to verify your email"
 				]);
@@ -30,12 +30,12 @@
 
 			$hash = explode('=',$hash,2);
 			$hash = $hash[1];
+
 			$uid = $uri->getQuery(['only'=>['uid']]);
 			if(empty($uid))
 				return view('error',[
 					"reason" => "Unable to verify your email"
 				]);
-
 			$uid = explode('=',$uid,2);
 			$uid = intval($uid[1]);
 			if($uid === 0)
