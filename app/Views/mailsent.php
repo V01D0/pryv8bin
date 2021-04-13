@@ -17,7 +17,7 @@
     <section>
       <div class="d-flex justify-content-center">
         <h3 class="is-center">
-          Please check your email, we have sent you a verification link.
+          <?=$text?>
         </h3>
       </div>
       <div class="d-flex justify-content-center">

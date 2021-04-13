@@ -49,7 +49,9 @@
 			$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
 			$model->registerUser($email, $password);
 			echo view('templates/header');
-			echo view('mailsent');
+			echo view('mailsent', [
+				"text"=>"Please check your email, we have sent you a verification link."
+			]);
 			return view('templates/footer');
 		}
 		

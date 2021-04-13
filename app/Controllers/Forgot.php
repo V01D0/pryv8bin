@@ -49,5 +49,10 @@
 			//CREATE USERS MODEL OBJECT
 			$model = new users($db);
 			$model->requestReset($email, $ip);
+			echo view('templates/header');
+			echo view('mailsent',[
+				"text"=>"Please check your email, we have sent you a verification link."
+			]);
+			return view('templates/footer');
 		}
     }
