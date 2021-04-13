@@ -21,7 +21,7 @@
 			$request = service('request');
 			$creds = $request->getPost();
 			$ip = $request->getIPAddress();
-			$ip = inet_pton($ip);
+			$ip = inet_ntop($ip);
 
 			if(!isset($creds['submit']) || $creds['submit'] !== 'Submit')
 			{
@@ -33,7 +33,7 @@
 			$email = $creds['email'];
 			//CHECK IF INPUT IS VALID
 			$valid = $this->validate([
-				'email' => ['label' => 'Email', 'rules' => "required|valid_email|is_not_unique[auth.email]"]
+				'email' => ['label' => 'Email', 'rules' => "required|valid_email"]
 			]);
 
 			//IF NOT
@@ -51,7 +51,7 @@
 			$model->requestReset($email, $ip);
 			echo view('templates/header');
 			echo view('mailsent',[
-				"text"=>"Please check your email, we have sent you a verification link."
+				"text"=>"If your mail exists in our database, you will receive a reset link in your inbox."
 			]);
 			return view('templates/footer');
 		}
