@@ -44,7 +44,7 @@ class users
 			else
 				return false;
 				
-			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `uid`= $uid");
+			$query = $this->db->query("SELECT 1 FROM ".`$type`." WHERE `hash`='$hash' AND `uid`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
 			if($type == 'v')
@@ -107,7 +107,7 @@ class users
 			$now = $now->format('Y-m-d H:i:s');
 			$query = $this->db->query("SELECT `email` FROM `auth` WHERE `email`='$email'");
 			if($query->getNumRows() <= 0)
-				return;
+				return ;
 
 			$hash = $this->genHash();
 			$data =	["email" => $email,
