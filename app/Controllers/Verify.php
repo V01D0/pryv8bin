@@ -16,6 +16,7 @@
             $uri = service('uri');
 			$type = strtolower($uri->getQuery(['only'=>['t']]));
 			$type = explode('=',$type,2);
+			$type = $type[1];
 			if(empty($type) || $type != 'v' || $type != 'r')
 				return view('error',[
 					"reason" => "Unable to verify your email"
