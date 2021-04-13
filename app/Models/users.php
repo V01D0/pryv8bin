@@ -38,19 +38,26 @@ class users
 		public function verify($hash, $uid, $type)
 		{
 			if($type == 'v')
+			{
 				$type = "auth";
+				$id = "uid";
+			}
+
 			elseif($type == 'r')
+			{
 				$type = "lostpass";
+				$id = "r_id";
+			}
 			else
 				return false;
 				
-			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `uid`= $uid");
+			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `$id`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
 			if($type == 'v')
-				$query = $this->db->query("UPDATE `auth` SET `hash`=NULL WHERE `uid`=$uid");
-			else
-				$query = $this->db->query("DELETE FROM `lostpass` WHERE `hash`='$hash' AND `uid`=$uid");
+				$query = $this->db->query("UPDATE `auth` SET `hash`=NULL WHERE `$id`=$uid");
+			// else
+			// 	$query = $this->db->query("DELETE FROM `lostpass` WHERE `hash`='$hash' AND `uid`=$uid");
 			return true;
 		}
 
@@ -110,7 +117,8 @@ class users
 				return ;
 
 			$hash = $this->genHash();
-			$data =	["email" => $email,
+			$uid = $this->getUID($email);
+			$data =	["uid" => $uid,
 				"IP" => $ip,
 				"hash"=> $hash,
 				"when" => $now
@@ -120,5 +128,17 @@ class users
 			$id = $this->db->insertID();
 			$this->sendMail(2, $hash, $id, $email);
 		}
+
+		public function getEmail($r_id)
+		{
+			$query = $this->db->query("SELECT `email` FROM `auth` WHERE `lostpass`.`$r_id`=`auth`.`$r_id`");
+			$result = $query->getResultArray();
+			return $result[0]['email'];
+		}
+
+		// public function changePassword()
+		// {
+		// 	$query = $this->db->query("UPDATE ");
+		// }
 
 	}
