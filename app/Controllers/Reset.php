@@ -11,7 +11,7 @@
         }
         public function index()
         {
-			if(!session()->get('loggedin'))
+			if(!session()->get('loggedin') && !isset($creds['uid']))
 				return redirect('/');
 			$db = db_connect();
 			$request = service('request');
