@@ -14,3 +14,5 @@ Self-Hosted private pastebin using [darkly css](https://bootswatch.com/darkly/)
 * Update, Delete pastes
 * Admin dashboard page
 * API
+* QR code generation
+* Shortlinks
