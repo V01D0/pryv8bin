@@ -26,7 +26,7 @@ african leopard
 albatross
 alligator
 alpaca
-american buffalo (bison)
+american buffalo
 american robin
 amphibian
 list
@@ -45,7 +45,7 @@ arctic wolf
 armadillo
 arrow crab
 asp
-ass (donkey)
+ass
 baboon
 badger
 bald eagle
@@ -80,7 +80,7 @@ booby
 box jellyfish
 bovid
 buffalo, african
-buffalo, american (bison)
+bison
 bug
 butterfly
 buzzard
@@ -356,8 +356,8 @@ rainbow trout
 rat
 rattlesnake
 raven
-ray (batoidea)
-ray (rajiformes)
+ray_batoidea
+ray_rajiformes
 red panda
 reindeer
 reptile
