@@ -18,6 +18,21 @@
             echo view('error');
         }
 
+        public function logout()
+        {
+            session()->destroy();
+            return redirect("/");
+        }
+
+        public function settings()
+        {
+            if(!session()->get('loggedin'))
+                return redirect('/');
+            echo view('templates/header');
+            echo view('settings');
+            return view('templates/footer');
+        }
+
         public function view($page = 'index')
         {
             if (!is_file(APPPATH . '/Views/pages/' . $page . '.php'))
