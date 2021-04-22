@@ -152,3 +152,7 @@ body {
 .info {
   padding: 10px;
 }
+
+.settings-li {
+  list-style: none;
+}
