@@ -1,6 +1,6 @@
 # pryv8bin
 
-Self-Hosted private pastebin
+Self-Hosted private pastebin using ![darkly css](https://bootswatch.com/darkly/)
 
 ### Desktop view:
 ![image](https://user-images.githubusercontent.com/38071738/115679269-05913880-a370-11eb-9b40-7176eff07220.png)
