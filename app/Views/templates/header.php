@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= link_tag('css/style.css', 'stylesheet') ?>
     <?= script_tag('js/index.js') ?>
-    <?= script_tag('bootstrap/js/bootstrap.bundle.js') ?>
+    <?= script_tag('bootstrap/js/bootstrap.bundle.min.js') ?>
     <?= link_tag('bootstrap/bootstrap.min.css', 'stylesheet') ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon') ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon', 'image/png') ?>
