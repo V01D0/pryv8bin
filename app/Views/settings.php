@@ -4,10 +4,11 @@
             <div class="container">
 				<h3 class="paste__heading">Account settings</h3>
                 <hr>
-				<ul>
-					<a href="/reset"><li  class="settings-li">Reset password</li></a>
-					<a href=""><li class="settings-li">Change username</li></a>
-				</ul>
+                <div class="container">
+                    <a href="/reset">Reset password</a>
+                    <br>
+                    <a href="">Change username</a>
+                </div>
             </div>
         </div>
     </div>
