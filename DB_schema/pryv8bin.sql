@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 12, 2021 at 12:46 PM
+-- Generation Time: Apr 23, 2021 at 03:37 AM
 -- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -37,6 +37,7 @@ CREATE TABLE `auth` (
   `key` varchar(21) DEFAULT NULL COMMENT 'API key'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 -- --------------------------------------------------------
 
 --
@@ -48,7 +49,7 @@ CREATE TABLE `lostpass` (
   `email` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `when` datetime NOT NULL,
-  `IP` varchar(255) NOT NULL
+  `IP` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,10 +63,13 @@ CREATE TABLE `pastes` (
   `link` varchar(255) NOT NULL,
   `paste` text NOT NULL COMMENT 'paste string to 1k',
   `expiry` datetime DEFAULT NULL COMMENT 'paste expiry date',
+  `burn` tinyint(1) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL COMMENT 'paste title',
   `password` varchar(255) DEFAULT NULL COMMENT 'password, if any (for the paste)',
-  `views` int(11) NOT NULL COMMENT 'number of views'
+  `views` int(11) NOT NULL COMMENT 'number of views',
+  `large` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Indexes for dumped tables
@@ -96,7 +100,7 @@ ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lostpass`

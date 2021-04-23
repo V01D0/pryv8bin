@@ -2,7 +2,6 @@
 
     namespace App\Models;
     use CodeIgniter\Database\ConnectionInterface;
-    use function PHPUnit\Framework\isNull;
 
     class paste_new
     {
@@ -102,7 +101,10 @@
             $expiry = $attributes['expiry'];
             $title = empty($attributes['title']) ? NULL : $attributes['title'];
             $password = empty($attributes['password']) ? NULL : password_hash($attributes['password'],  PASSWORD_ARGON2ID);
-            $uid = isNull(session()->get('uid')) ? 0 : session()->get('uid');
+            $uid = is_null(session()->get('uid')) ? 0 : session()->get('uid');
+            $burn = false;
+            if($expiry == "bar")
+                $burn = true;
             // $paste = $this->db->real_escape_string($_POST['paste']);
             // $paste = $this->db->real_escape_string($this->input->post);
             if (empty($paste))
@@ -118,16 +120,16 @@
                 {
                     //IF PASTE IS MORE THAN 1KB
                     $paste_ = substr($paste, 1024, strlen($paste));
-                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $title, $password, $paste_);
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $burn, $title, $password, $paste_);
                 } 
                 else
-                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $title, $password, "");
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $burn, $title, $password, "");
             }
             return $link;
         }
 
         //SERVER SIDE - WRITING PASTE TO DB
-        function storePaste($uid, $link, $paste, $expiry, $title, $password, $paste_)
+        function storePaste($uid, $link, $paste, $expiry, $burn, $title, $password, $paste_)
         {
             //CHECK IF PASTE IS MORE THAN 1KB, IF SO WRITE EXTRA TO txt FILE
             if (trim($paste_) != "")
@@ -154,6 +156,7 @@
                 'uid' => $uid,
                 'link' => $link,
                 'paste' => $paste,
+                'burn' => $burn,
                 'expiry' => $ex,
                 'title' => $title,
                 'password' => $password,
