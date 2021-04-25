@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2021 at 03:37 AM
+-- Generation Time: Apr 25, 2021 at 01:15 PM
 -- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -70,7 +70,6 @@ CREATE TABLE `pastes` (
   `large` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 --
 -- Indexes for dumped tables
 --
@@ -100,13 +99,21 @@ ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `lostpass`
 --
 ALTER TABLE `lostpass`
   MODIFY `resetid` int(11) NOT NULL AUTO_INCREMENT;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`pryv8bin`@`localhost` EVENT `event_name` ON SCHEDULE EVERY 1 MINUTE STARTS '2021-04-25 13:03:44' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM `pastes` WHERE NOW()>`expiry`$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
