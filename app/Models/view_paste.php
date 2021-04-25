@@ -1,7 +1,6 @@
 <?php
 
     namespace App\Models;
-	use App\Controllers\P;
 	use CodeIgniter\Database\ConnectionInterface;
 
 	class view_paste
