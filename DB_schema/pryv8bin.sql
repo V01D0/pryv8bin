@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.4deb2~bpo10+1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 25, 2021 at 01:15 PM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Host: localhost
+-- Generation Time: Apr 25, 2021 at 12:24 PM
+-- Server version: 10.3.27-MariaDB-0+deb10u1
+-- PHP Version: 7.3.27-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -36,7 +35,6 @@ CREATE TABLE `auth` (
   `hash` varchar(255) DEFAULT NULL COMMENT 'reset+verification hash',
   `key` varchar(21) DEFAULT NULL COMMENT 'API key'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 -- --------------------------------------------------------
 
@@ -99,21 +97,13 @@ ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lostpass`
 --
 ALTER TABLE `lostpass`
   MODIFY `resetid` int(11) NOT NULL AUTO_INCREMENT;
-
-DELIMITER $$
---
--- Events
---
-CREATE DEFINER=`pryv8bin`@`localhost` EVENT `event_name` ON SCHEDULE EVERY 1 MINUTE STARTS '2021-04-25 13:03:44' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM `pastes` WHERE NOW()>`expiry`$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
