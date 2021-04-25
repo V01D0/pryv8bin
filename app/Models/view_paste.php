@@ -108,8 +108,9 @@
 			{
 				if($this->isLarge($link))
 					unlink(WRITEPATH . '/' . $link . '.txt');
+				$query = $this->db->query("DELETE FROM `pastes` WHERE `link`='$link'");
+				return true;
 			}
-			$query = $this->db->query("DELETE FROM `pastes` WHERE `link`='$link'");
-			return true;
+			return false;
 		}
 	}
