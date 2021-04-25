@@ -8,7 +8,7 @@
 				</div>
 				<?php if(isset($burn) && !isset($link)):?>
 					<button id="submit" name="burnit" value="<?=$burn?>" type="submit" class="btn btn-primary">View paste</button>
-					<button id="submit" name="later" type="button" class="btn btn-primary">Copy paste link to clipboard</button>
+					<button id="submit" name="later" type="button" onclick="copyLink()" class="btn btn-primary">Copy paste link to clipboard</button>
 				<?php endif;?>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 				<div class="col-12 col-sm-4">
 					<button id="submit" name="submit" value="Submit" type="submit" class="btn btn-primary">View paste</button>
 					<?php if(isset($burn)):?>
-						<button id="submit" name="later" type="button" class="btn btn-primary">Copy paste link to clipboard</button>
+						<button id="submit" name="later" type="button" onclick="copyLink()" class="btn btn-primary">Copy paste link to clipboard</button>
 					<?php endif; ?>
 				</div>
 			</div>
