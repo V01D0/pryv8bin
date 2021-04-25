@@ -4,7 +4,7 @@
 <head>
     <?php
         if(isset($title))
-            echo '<title>'.$title.'</title>';
+            echo '<title>'.esc($title).'</title>';
         else
             echo '<title>Pryv8bin</title>';
     ?>

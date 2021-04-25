@@ -1,11 +1,11 @@
 <?php
 if(isset($title))
-	echo '<h3 class="paste__heading">'.$title.'</h3>';
+	echo '<h3 class="paste__heading">'.esc($title).'</h3>';
 ?>
   <div class="row">
     <div class="col-sm">
-		<span class="info">Author: <?= $author?></span>
-		<span class="info">Views: <?= $views ?></span>
+		<span class="info">Author: <?= esc($author)?></span>
+		<span class="info">Views: <?= esc($views) ?></span>
 	</div>
   </div>
 
@@ -15,5 +15,5 @@ if(isset($title))
 	background-color: rgb(51, 51, 51);
 	resize: none;
 	border-color: yellowgreen;"
-	readonly><?= $paste ?></textarea>
+	readonly><?= esc($paste) ?></textarea>
 </div>
