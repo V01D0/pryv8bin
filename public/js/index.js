@@ -1,46 +1,46 @@
 "use strict";
 function generatePassword() {
-    const length = 10;
-    const charset =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let password = "";
-    for (let i = 0, n = charset.length; i < length; i++) {
-        password += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return password;
+  const length = 10;
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let password = "";
+  for (let i = 0, n = charset.length; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return password;
 }
 
 function changeOption(value) {
-    let select = document.getElementById("expiry");
-    let opts = select.options;
-    for (let opt, i = 0; (opt = opts[i]); i++) {
-        if (opt.value == value) {
-            select.selectedIndex = i;
-            break;
-        }
+  let select = document.getElementById("expiry");
+  let opts = select.options;
+  for (let opt, i = 0; (opt = opts[i]); i++) {
+    if (opt.value == value) {
+      select.selectedIndex = i;
+      break;
     }
+  }
 }
 
 function checkEmpty(textArea) {
-    if (textArea.value.trim() == "") {
-        return false;
-    }
-    return true;
+  if (textArea.value.trim() == "") {
+    return false;
+  }
+  return true;
 }
 
 function validate() {
-    let sumbitButton = document.getElementById("paste__submit");
-    let textArea = document.getElementById("paste-text");
-    let res = checkEmpty(textArea);
-    if (res === true) {
-        textArea.style.borderColor = "yellowgreen";
-        textArea.style.boxShadow = "0 0 0 0.15rem yellowgreen";
-        sumbitButton.removeAttribute("disabled");
-    } else {
-        textArea.style.borderColor = "red";
-        textArea.style.boxShadow = "0 0 0 0.15rem red";
-        sumbitButton.setAttribute("disabled", "");
-    }
+  let sumbitButton = document.getElementById("paste__submit");
+  let textArea = document.getElementById("paste-text");
+  let res = checkEmpty(textArea);
+  if (res === true) {
+    textArea.style.borderColor = "yellowgreen";
+    textArea.style.boxShadow = "0 0 0 0.15rem yellowgreen";
+    sumbitButton.removeAttribute("disabled");
+  } else {
+    textArea.style.borderColor = "red";
+    textArea.style.boxShadow = "0 0 0 0.15rem red";
+    sumbitButton.setAttribute("disabled", "");
+  }
 }
 
 // function validate() {
@@ -55,42 +55,49 @@ function validate() {
 // }
 
 function uncheck() {
-    let selected = document.getElementById("expiry");
-    if (selected.value != "bar") {
-        let cb = document.getElementById("burn-after-read");
-        cb.checked = false;
-    } else {
-        cb.checked = true;
-    }
+  let selected = document.getElementById("expiry");
+  if (selected.value != "bar") {
+    let cb = document.getElementById("burn-after-read");
+    cb.checked = false;
+  } else {
+    cb.checked = true;
+  }
 }
 
-
 function viewPassword(ele, id) {
-    let cb = document.getElementById(id);
-    let field = document.getElementById(ele);
-    if(cb.checked) {
-        field.type = 'text';
-    }
-    else {
-        field.type = 'password';
-    }
+  let cb = document.getElementById(id);
+  let field = document.getElementById(ele);
+  if (cb.checked) {
+    field.type = "text";
+  } else {
+    field.type = "password";
+  }
 }
 
 function matchPasswords() {
-    let pw = document.getElementById('password');
-    let cpw = document.getElementById('confirm-password');
-    let sumbitButton = document.getElementById("submit");
-    if(cpw.value !== pw.value) {
-        cpw.style.borderColor = 'red';
-        cpw.style.boxShadow = "0 0 0 0.15rem red";
-        sumbitButton.setAttribute("disabled", "");
-    }
-    else {
-        cpw.style.borderColor = 'green';
-        cpw.style.boxShadow = "0 0 0 0.15rem green";
-        sumbitButton.removeAttribute("disabled");
-    }
+  let pw = document.getElementById("password");
+  let cpw = document.getElementById("confirm-password");
+  let sumbitButton = document.getElementById("submit");
+  if (cpw.value !== pw.value) {
+    cpw.style.borderColor = "red";
+    cpw.style.boxShadow = "0 0 0 0.15rem red";
+    sumbitButton.setAttribute("disabled", "");
+  } else {
+    cpw.style.borderColor = "green";
+    cpw.style.boxShadow = "0 0 0 0.15rem green";
+    sumbitButton.removeAttribute("disabled");
+  }
+}
 
+function copyLink() {
+  let dummy = document.createElement("input"),
+    text = window.location.href;
+
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
 }
 // function populateList() {
 //     const optionsList = [
