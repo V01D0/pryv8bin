@@ -175,6 +175,7 @@
 				passwordField.value = generatePassword();
 			} else {
 				let passwordField = document.getElementById("inputPassword2");
+				passwordField.value = "";
 				passwordField.setAttribute('hidden', '')
 			}
 		});
