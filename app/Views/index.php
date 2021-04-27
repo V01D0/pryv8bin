@@ -9,6 +9,7 @@
 	<?= link_tag('css/style.css', 'stylesheet'); ?>
     <?= script_tag('js/index.js'); ?>
     <?= script_tag('bootstrap/js/bootstrap.bundle.min.js'); ?>
+	<?= link_tag('js/codemirror-5.61.0/lib/codemirror.css', 'stylesheet') ?>
     <?= link_tag('bootstrap/bootstrap.min.css', 'stylesheet'); ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon'); ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon', 'image/png'); ?>
@@ -67,9 +68,10 @@
 	</nav>
 	<div class="paste-form">
 		<h1 class="paste__heading">New Paste</h1>
+		<script data-main="/js/requirements2.js" src="/js/require.js"></script>
 		<?= form_open('paste', 'onsubmit="validate()"') ?>
 		<div class="col-10">
-			<textarea class="form-control" name="paste_content" id="paste-text" oninput="validate()"></textarea>
+			<textarea class="form-control" name="paste_content" id="paste-text"></textarea>
 		</div>
 		<br>
 		<div>

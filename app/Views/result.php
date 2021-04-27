@@ -8,12 +8,11 @@ if(isset($title))
 		<span class="info">Views: <?= esc($views) ?></span>
 	</div>
   </div>
-
-<div class="col-10" style="margin-bottom: 10%">
-	<textarea class="form-control" name="paste_content" style="  color: white;
+<script data-main="/js/requirements.js" src="/js/require.js"></script>
+	<!-- <textarea class="form-control" name="paste_content" style="  color: white;
 	height: 720px;
 	background-color: rgb(51, 51, 51);
 	resize: none;
 	border-color: yellowgreen;"
-	readonly><?= esc($paste) ?></textarea>
-</div>
+	readonly></textarea> -->
+	<textarea name="" id="paste"><?=esc($paste)?></textarea>

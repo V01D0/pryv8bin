@@ -22,23 +22,22 @@ function changeOption(value) {
 }
 
 function checkEmpty(textArea) {
-  if (textArea.value.trim() == "") {
+  if (textArea.trim() == "") {
     return false;
   }
   return true;
 }
 
-function validate() {
+function validate(text) {
   let sumbitButton = document.getElementById("paste__submit");
-  let textArea = document.getElementById("paste-text");
-  let res = checkEmpty(textArea);
+  let res = checkEmpty(text);
   if (res === true) {
-    textArea.style.borderColor = "yellowgreen";
-    textArea.style.boxShadow = "0 0 0 0.15rem yellowgreen";
+    // textArea.style.borderColor = "yellowgreen";
+    // textArea.style.boxShadow = "0 0 0 0.15rem yellowgreen";
     sumbitButton.removeAttribute("disabled");
   } else {
-    textArea.style.borderColor = "red";
-    textArea.style.boxShadow = "0 0 0 0.15rem red";
+    // textArea.style.borderColor = "red";
+    // textArea.style.boxShadow = "0 0 0 0.15rem red";
     sumbitButton.setAttribute("disabled", "");
   }
 }
