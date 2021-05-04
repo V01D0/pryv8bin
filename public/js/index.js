@@ -42,6 +42,12 @@ function validate(text) {
   }
 }
 
+function getLang() {
+  let lang = document.querySelector(".lang");
+  if (lang != null || lang != undefined) return lang.value;
+  return 0;
+}
+
 // function validate() {
 //     let textArea = document.getElementById("paste-text");
 //     if (textArea.value.trim() == "") {

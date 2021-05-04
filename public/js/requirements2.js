@@ -25,6 +25,13 @@ requirejs(["CodeMirror"], function (CodeMirror) {
   cm.on("change", function () {
     validate(cm.getValue());
   });
+  document.getElementById("language").addEventListener("change", function () {
+    // cm.setOption("mode", this.value);
+    cm.mode = this.value;
+    // let script = document.createElement("script");
+    // script.src = `js/codemirror-5.61.0/mode/${cm.mode}/${cm.mode}.js`;
+    // document.body.appendChild(script);
+  });
 });
 
 // requirejs(["CodeMirror"], function (CodeMirror) {});
