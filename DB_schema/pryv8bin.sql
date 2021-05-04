@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4deb2~bpo10+1
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 25, 2021 at 12:24 PM
--- Server version: 10.3.27-MariaDB-0+deb10u1
--- PHP Version: 7.3.27-1~deb10u1
+-- Host: localhost:3306
+-- Generation Time: May 04, 2021 at 03:41 PM
+-- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,6 +40,17 @@ CREATE TABLE `auth` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `langcodes`
+--
+
+CREATE TABLE `langcodes` (
+  `id` int(11) NOT NULL,
+  `language` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lostpass`
 --
 
@@ -60,6 +72,7 @@ CREATE TABLE `pastes` (
   `uid` int(11) NOT NULL COMMENT 'uid (from auth table)',
   `link` varchar(255) NOT NULL,
   `paste` text NOT NULL COMMENT 'paste string to 1k',
+  `langcode` int(11) NOT NULL DEFAULT 122,
   `expiry` datetime DEFAULT NULL COMMENT 'paste expiry date',
   `burn` tinyint(1) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL COMMENT 'paste title',
@@ -79,6 +92,12 @@ ALTER TABLE `auth`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `langcodes`
+--
+ALTER TABLE `langcodes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lostpass`
 --
 ALTER TABLE `lostpass`
@@ -87,6 +106,8 @@ ALTER TABLE `lostpass`
 --
 -- Indexes for table `pastes`
 --
+ALTER TABLE `pastes`
+  ADD KEY `language` (`langcode`);
 ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 
 --
@@ -98,6 +119,12 @@ ALTER TABLE `pastes` ADD FULLTEXT KEY `paste` (`paste`);
 --
 ALTER TABLE `auth`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `langcodes`
+--
+ALTER TABLE `langcodes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lostpass`
