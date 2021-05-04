@@ -8,7 +8,12 @@ if(isset($title))
 		<span class="info">Views: <?= esc($views) ?></span>
 	</div>
   </div>
-<script data-main="/js/requirements.js" src="/js/require.js"></script>
+  <script async data-main="/js/requirements.js" src="/js/require.js"></script>
+
+<div class="col-12" style="margin-bottom: 10%">
+	<?php if(isset($language)) { ?>
+	<input type="hidden" class="lang" value="<?= esc($language) ?>">
+	<?php }?>
 	<!-- <textarea class="form-control" name="paste_content" style="  color: white;
 	height: 720px;
 	background-color: rgb(51, 51, 51);
@@ -16,3 +21,4 @@ if(isset($title))
 	border-color: yellowgreen;"
 	readonly></textarea> -->
 	<textarea name="" id="paste"><?=esc($paste)?></textarea>
+</div>

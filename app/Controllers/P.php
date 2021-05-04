@@ -78,6 +78,7 @@
 			$author = $model->getAuthor($link);
 			$title = !$model->getTitle($link) ? "Untitled paste" : $model->getTitle($link);
 			$res = $model->getPaste($link);
+			$language = $model->getLang($link);
 
 			//IF SESSION VAR DOESN'T HAVE LINK
 			if(!session()->has($link))
@@ -101,6 +102,7 @@
 				'title' => $title,
 				'author' => $author,
 				'views' => $views,
+				'language' => $language,
 				'paste' => $res
 			]);
 

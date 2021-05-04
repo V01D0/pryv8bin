@@ -9,8 +9,9 @@
 	<?= link_tag('css/style.css', 'stylesheet'); ?>
     <?= script_tag('js/index.js'); ?>
     <?= script_tag('bootstrap/js/bootstrap.bundle.min.js'); ?>
-	<?= link_tag('js/codemirror-5.61.0/lib/codemirror.css', 'stylesheet') ?>
+	<?= link_tag('js/codemirror-5.61.0/lib/codemirror.css', 'stylesheet'); ?>
     <?= link_tag('bootstrap/bootstrap.min.css', 'stylesheet'); ?>
+    <?= link_tag('js/codemirror-5.61.0/theme/monokai.css', 'stylesheet'); ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon'); ?>
     <?= link_tag('icons/apple-touch-icon.png', 'apple-touch-icon', 'image/png'); ?>
     <?= link_tag('icons/favicon-32x32.png', 'icon', 'image/png'); ?>
@@ -94,10 +95,20 @@
 								'm6' => '6 Months',
 								'y1' => '1 Year'
 							];
-							echo form_dropdown('expiry', $options, 'bar', 'id=expiry onchange="uncheck()"');
+							echo form_dropdown('expiry', $options, 'bar', 'id="expiry" onchange="uncheck()"');
 							?>
 							<br>
 							<br>
+						</div>
+					</div>
+					<div class="col">
+						<br>
+						<div class="dropdown">
+							<br>
+							<label class="form-check-label" style="color:white;">Language</label>
+							<?php
+								echo form_dropdown('language', $languages, 122, 'id="language"');
+							?>
 						</div>
 					</div>
 				</div>
@@ -182,21 +193,6 @@
 			}
 		});
 
-		document.getElementById('paste-text').addEventListener('keydown', function(e) {
-			if (e.key == 'Tab') {
-				e.preventDefault();
-				var start = this.selectionStart;
-				var end = this.selectionEnd;
-
-				// set textarea value to: text before caret + tab + text after caret
-				this.value = this.value.substring(0, start) +
-				"\t" + this.value.substring(end);
-
-				// put caret at right position again
-				this.selectionStart =
-				this.selectionEnd = start + 1;
-			}
-			});
 
 		cb = document.getElementById("burn-after-read");
 		cb.addEventListener('change', function() {

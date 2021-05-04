@@ -3,7 +3,9 @@
     namespace App\Models;
 	use CodeIgniter\Database\ConnectionInterface;
 
-	class view_paste
+use function PHPUnit\Framework\returnSelf;
+
+class view_paste
 	{
 		function __construct(ConnectionInterface &$db)
         {
@@ -112,4 +114,16 @@
 			}
 			return false;
 		}
+
+		public function getLang($link)
+		{
+			$query = $this->db->query("SELECT `langcode` FROM `pastes` WHERE `link`='$link'");
+			$result = $query->getResultArray();
+			if($result[0]['langcode'] == 122)
+				return false;
+			$langcode = intval($result[0]['langcode']);
+			$query = $this->db->query("SELECT `language` FROM `langcodes` WHERE `id`=$langcode");
+			$result = $query->getResultArray();
+			return $result[0]['language'];
+		} 
 	}

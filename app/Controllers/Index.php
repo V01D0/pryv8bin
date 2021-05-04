@@ -10,7 +10,11 @@
         }
         public function index()
         {
-            return view('index');
+            $config = new \Config\Languages;
+            $languages = $config->langs;
+            return view('index',[
+                'languages'=> $languages
+            ]);
         }
 
         public function error()

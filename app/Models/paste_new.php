@@ -60,6 +60,15 @@
             return strtolower($link);
         }
 
+        function getLanguage($lang)
+        {
+            if($lang == 122)
+                return false;
+            $query = $this->db->query("SELECT `id` FROM `langcodes` WHERE `language`='$lang'");
+            $result = $query->getResultArray();
+			return intval($result[0]['id']);
+        }
+
         //FUNCTION TO GENERATE SQL QUERY FOR RESPECTIVE DATE
         function getExpiry($expiry)
         {
@@ -99,12 +108,14 @@
         {
             $paste = $attributes['paste_content'];
             $expiry = $attributes['expiry'];
+            $language = $attributes['language'];
             $title = empty($attributes['title']) ? NULL : $attributes['title'];
             $password = empty($attributes['password']) ? NULL : password_hash($attributes['password'],  PASSWORD_ARGON2ID);
             $uid = is_null(session()->get('uid')) ? 0 : session()->get('uid');
             $burn = false;
             if($expiry == "bar")
                 $burn = true;
+            $language = $this->getLanguage($language);
             // $paste = $this->db->real_escape_string($_POST['paste']);
             // $paste = $this->db->real_escape_string($this->input->post);
             if (empty($paste))
@@ -120,16 +131,16 @@
                 {
                     //IF PASTE IS MORE THAN 1KB
                     $paste_ = substr($paste, 1024, strlen($paste));
-                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $burn, $title, $password, $paste_);
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $language, $expiry, $burn, $title, $password, $paste_);
                 } 
                 else
-                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $expiry, $burn, $title, $password, "");
+                    $this->storePaste($uid, $link, substr($paste, 0, 1024), $language, $expiry, $burn, $title, $password, "");
             }
             return $link;
         }
 
         //SERVER SIDE - WRITING PASTE TO DB
-        function storePaste($uid, $link, $paste, $expiry, $burn, $title, $password, $paste_)
+        function storePaste($uid, $link, $paste, $language, $expiry, $burn, $title, $password, $paste_)
         {
             //CHECK IF PASTE IS MORE THAN 1KB, IF SO WRITE EXTRA TO txt FILE
             if (trim($paste_) != "")
@@ -140,6 +151,7 @@
                     return view('error');
                 }
             }
+            $language = false ? 122 : $language;
             $large = isset($large) ? $large : 0;
             //IF EXPIRY IS NULL, $ex BECOMES NULL.
             $ex =  is_null($expiry) ? NULL : $expiry;
@@ -156,6 +168,7 @@
                 'uid' => $uid,
                 'link' => $link,
                 'paste' => $paste,
+                'langcode' => $language,
                 'burn' => $burn,
                 'expiry' => $ex,
                 'title' => $title,

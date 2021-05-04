@@ -19,6 +19,9 @@ class Paste extends Home
 
         $request = service('request');
         $pasteVars = $request->getPost();
+        if(!isset($pasteVars['submit']))
+            return redirect()->to('/');
+
         if ($pasteVars['submit'] !== 'Submit')
             return view('error');
 
