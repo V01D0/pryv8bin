@@ -3,7 +3,8 @@
 Self-Hosted private pastebin using [darkly css](https://bootswatch.com/darkly/)
 
 ## TODO:
-- [ ] Syntax highlighting
+
+- [x] Syntax highlighting
 - [x] Cleanup script
 - [ ] Update, Delete pastes
 - [ ] Admin dashboard page
