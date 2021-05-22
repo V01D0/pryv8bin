@@ -20,7 +20,7 @@ requirejs(["CodeMirror"], function (CodeMirror) {
     lineWrapping: false,
     autoRefresh: true,
   });
-  cm.setSize("70%", 720);
+  cm.setSize("70%", 800);
   cm.save();
   cm.on("change", function () {
     validate(cm.getValue());
