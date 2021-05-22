@@ -3,7 +3,6 @@
     namespace App\Models;
 	use CodeIgniter\Database\ConnectionInterface;
 
-use function PHPUnit\Framework\returnSelf;
 
 class view_paste
 	{
