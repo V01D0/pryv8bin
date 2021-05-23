@@ -35,6 +35,10 @@
 					'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
 				]);
 
+				//IF NOT
+				if(!$valid)
+				return redirect()->back();
+
 				$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
 				$model->changePassword($password, $creds['uid']);
 				echo view('templates/header');
@@ -42,10 +46,6 @@
 					"text" => "Your password as been reset!"
 				]);
 				return view('templates/footer');
-
-				//IF NOT
-				if(!$valid)
-					return redirect()->back();
 			}
 
 			//CHECK IF INPUT IS VALID
