@@ -40,17 +40,15 @@ class users
 			if($type == 'v')
 			{
 				$type = "auth";
-				$id = "uid";
 			}
 
 			elseif($type == 'r')
 			{
 				$type = "lostpass";
-				$id = "r_id";
 			}
 			else
 				return false;
-				
+			$id = "uid";
 			$query = $this->db->query("SELECT 1 FROM `$type` WHERE `hash`='$hash' AND `$id`= $uid");
 			if($query->getNumRows() <= 0)
 				return false;
