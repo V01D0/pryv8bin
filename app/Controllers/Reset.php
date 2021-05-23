@@ -63,7 +63,7 @@
 			]);
 			
 			//IF NOT
-			if(!$valid && $model->isMatch(session()->get('email'), $creds['old-password']))
+			if(!$valid || $model->isMatch(session()->get('email'), $creds['old-password']))
 			{
 				echo view('templates/header');
 				echo view('reset',[
