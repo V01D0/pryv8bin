@@ -37,7 +37,13 @@
 
 				//IF NOT
 				if(!$valid)
-				return redirect()->back();
+				{
+					echo view('templates/header');
+					echo view('reset',[
+						'validation' => $this->validator
+					]);
+					return view('templates/footer');
+				}
 
 				$password = password_hash($creds['confirm-password'], PASSWORD_ARGON2ID);
 				$model->changePassword($password, $creds['uid']);
