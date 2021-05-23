@@ -118,7 +118,7 @@ class users
 
 			$hash = $this->genHash();
 			$uid = $this->getUID($email);
-			$data =	["uid" => $uid,
+			$data =	["resetid" => $uid,
 				"IP" => $ip,
 				"hash"=> $hash,
 				"when" => $now
