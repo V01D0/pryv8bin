@@ -61,9 +61,9 @@
 				'password' => ['label'=> 'Password', 'rules' => 'required|min_length[8]'],
 				'confirm-password' => ['label'=> 'Confirm Password', 'rules' => 'required|matches[password]']
 			]);
-
+			
 			//IF NOT
-			if(!$valid)
+			if(!$valid && $model->isMatch(session()->get('email'), $creds['old-password']))
 			{
 				echo view('templates/header');
 				echo view('reset',[
