@@ -40,6 +40,7 @@
 				{
 					echo view('templates/header');
 					echo view('reset',[
+						'uid' => $creds['uid'],
 						'validation' => $this->validator
 					]);
 					return view('templates/footer');
