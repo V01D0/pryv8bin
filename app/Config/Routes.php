@@ -35,6 +35,7 @@ $routes->get('/', 'Index');
 $routes->add('/settings', 'Index::settings');
 $routes->add('/logout', 'Index::logout');
 $routes->add('/error', 'Index::error');
+$routes->add('/docs', 'Index::doku');
 $routes->add('/p/(:any)', 'P');
 $routes->add('/mailsent', 'Index::mailsent');
 // $routes->add('pastes/(:any)', 'Pastes::view/$1');

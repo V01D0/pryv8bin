@@ -30,10 +30,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="docs">API</a>
+						<a class="nav-link" href="/docs">API</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="faq">FAQ</a>
+						<a class="nav-link" href="/faq">FAQ</a>
 					</li>
 				</ul>
 			</div>

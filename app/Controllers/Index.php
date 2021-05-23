@@ -8,6 +8,7 @@
         {
             parent::__construct();
         }
+        
         public function index()
         {
             $config = new \Config\Languages;
@@ -20,6 +21,14 @@
         public function error()
         {
             echo view('error');
+        }
+
+        public function doku()
+        {
+            echo view('templates/header', [
+                "title" => "Docs" 
+            ]);
+            echo view('templates/footer');
         }
 
         public function logout()
@@ -35,12 +44,6 @@
             echo view('templates/header');
             echo view('settings');
             return view('templates/footer');
-        }
-
-        public function docs()
-        {
-            echo view('header');
-            return view('footer');
         }
 
         public function view($page = 'index')
