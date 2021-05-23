@@ -39,7 +39,6 @@ $routes->add('/p/(:any)', 'P');
 $routes->add('/mailsent', 'Index::mailsent');
 // $routes->add('pastes/(:any)', 'Pastes::view/$1');
 // $routes->add('/index.php', 'Home::index');
-$routes->add('/docs', '/docs/index.html');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

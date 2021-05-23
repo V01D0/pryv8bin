@@ -31,11 +31,9 @@
 				<ul class="navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="docs">API</a>
-						<!-- NOT USING VIEW ^^^ -->
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="faq">FAQ</a>
-						<!-- NOT USING VIEW ^^^ -->
 					</li>
 				</ul>
 			</div>

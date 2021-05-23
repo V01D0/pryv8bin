@@ -37,6 +37,12 @@
             return view('templates/footer');
         }
 
+        public function docs()
+        {
+            echo view('header');
+            return view('footer');
+        }
+
         public function view($page = 'index')
         {
             if (!is_file(APPPATH . '/Views/pages/' . $page . '.php'))
