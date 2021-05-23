@@ -49,6 +49,7 @@
 				$session = session();
 				$username = $model->getUsername($email);
 				$session->set('username',$username);
+				$session->set('email', $email);
 				$session->set('uid', $model->getUID($email));
 				$session->set('loggedin',1);
 				return redirect('/');
