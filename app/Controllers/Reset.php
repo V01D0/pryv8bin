@@ -71,5 +71,10 @@
 				]);
 				return view('templates/footer');
 			}
+			echo view('templates/header');
+			echo view('verified', [
+				"text" => "Your password as been reset!"
+			]);
+			return view('templates/footer');
         }
     }
