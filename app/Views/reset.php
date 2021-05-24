@@ -35,6 +35,8 @@
                         <?php if (isset($validation)) : ?>
                             <div class="col-12">
                                 <div class="alert alert-danger" role="alert">
+                                    <?php if(empty($validation->listErrors()))?>
+                                        <?= "Current password incorrect!" ?>
                                     <?= $validation->listErrors() ?>
                                 </div>
                             </div>
