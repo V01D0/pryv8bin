@@ -37,7 +37,7 @@ class users
 
 		public function isMatch($email, $givenPassword)
 		{
-			$query = $this->db->query("SELECT `password` FROM `auth` WHERE `email`=$email");
+			$query = $this->db->query("SELECT `password` FROM `auth` WHERE `email`='$email'");
 			$result = $query->getResultArray();
 			$hash = $result[0]['password'];
 			$result = password_verify($givenPassword, $hash);
