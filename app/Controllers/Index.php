@@ -26,9 +26,10 @@
         public function doku()
         {
             echo view('templates/header', [
-                "title" => "Docs" 
+                "title" => "Docs"
             ]);
-            echo view('templates/footer');
+            echo view('api');
+            return view('templates/footer');
         }
 
         public function logout()
