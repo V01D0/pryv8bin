@@ -25,7 +25,7 @@ Create paste
 Read paste
 </h3>
 <code>
-	<a href="<?=site_url()."api/paste/"?>"><?=site_url()."api/rm/<pasteID>"?></a>
+	<a href="<?=site_url()."api/paste/"?>"><?=site_url()."api/read/<pasteID>"?></a>
 </code>
 <br><br>
 <h3 class="paste__heading">
