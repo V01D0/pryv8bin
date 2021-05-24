@@ -79,7 +79,7 @@ bonobo
 booby
 box jellyfish
 bovid
-buffalo, african
+buffalo african
 bison
 bug
 butterfly
