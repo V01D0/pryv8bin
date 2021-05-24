@@ -1,11 +1,11 @@
 <h2 class="paste__heading">
 	API documentation
 </h2>
-<p>Create pastes from your terminal!</p>
+<p class="paste__heading">Create pastes from your terminal!</p>
 
 <br><br><br>
 
-<p>Requirements <br> - an API key (get yours<a href="/api"> here</a>)</p>
+<p class="paste__heading">Requirements <br> - an API key (get yours<a href="/api"> here</a>)</p>
 
 <h3 class="paste__heading">
 API URL
