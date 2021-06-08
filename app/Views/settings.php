@@ -8,6 +8,7 @@
                     <a href="/reset">Reset password</a>
                     <br>
                     <a href="">Change username</a>
+                    <a href="">API settings</a>
                 </div>
             </div>
         </div>
