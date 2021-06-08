@@ -5,7 +5,7 @@
 
 <br><br><br>
 
-<p class="paste__heading">Requirements <br> - an API key (get yours<a href="/api"> here</a>)</p>
+<p class="paste__heading">Requirements <br> - an API key (get yours<a href="/api/get"> here</a>)</p>
 
 <h3 class="paste__heading">
 API URL
