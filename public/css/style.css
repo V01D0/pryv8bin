@@ -127,7 +127,6 @@ body {
 .paste__heading {
   font-family: "Titillium Web", sans-serif;
   padding: 10px;
-  /* margin: 10px; */
 }
 
 .paste-form {
@@ -200,4 +199,10 @@ code {
 
 code a {
   color: red;
+}
+
+.api__heading {
+  font-family: "Titillium Web", sans-serif;
+  padding: 10px;
+  text-align: center;
 }
