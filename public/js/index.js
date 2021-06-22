@@ -103,7 +103,20 @@ function copyLink() {
   dummy.select();
   document.execCommand("copy");
   document.body.removeChild(dummy);
+  alert("URL has been copied!");
 }
+
+function copyKey() {
+  let dummy = document.createElement("input"),
+    text = document.getElementById("key").value;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  alert("API key has been copied!");
+}
+
 // function populateList() {
 //     const optionsList = [
 //         "Burn after read",
