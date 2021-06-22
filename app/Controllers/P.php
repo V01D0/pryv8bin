@@ -14,8 +14,9 @@
 		public function index()
         {
             $uri = current_url(true);
+			# Get current url
 			$db = db_connect();
-            if(trim(empty($uri->getSegment(2))))
+            if(empty(trim($uri->getSegment(2))))
                 return view("error");
 
 				if($uri->getTotalSegments()>2)

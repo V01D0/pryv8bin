@@ -41,7 +41,7 @@
         public function settings()
         {
             if(!session()->get('loggedin'))
-                return redirect('/');
+                return redirect()->to("login");
             echo view('templates/header');
             echo view('settings');
             return view('templates/footer');
