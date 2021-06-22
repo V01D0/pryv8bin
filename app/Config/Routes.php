@@ -32,12 +32,15 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Index');
-$routes->add('/settings', 'Index::settings');
+$routes->add('/register', 'Register');
+$routes->add('/login', 'Login');
 $routes->add('/logout', 'Index::logout');
 $routes->add('/error', 'Index::error');
 $routes->add('/docs', 'Index::doku');
+$routes->add('/settings', 'Index::settings');
 $routes->add('/p/(:any)', 'P');
 $routes->add('/mailsent', 'Index::mailsent');
+$routes->add('/(?i)api','API');
 // $routes->add('pastes/(:any)', 'Pastes::view/$1');
 // $routes->add('/index.php', 'Home::index');
 /*
