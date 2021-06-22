@@ -7,8 +7,9 @@
                 <div class="container">
                     <a href="/reset">Reset password</a>
                     <br>
-                    <a href="">Change username</a>
-                    <a href="">API settings</a>
+                    <!-- <a href="/">Change username</a> -->
+                    <br>
+                    <a href="/api">API settings</a>
                 </div>
             </div>
         </div>
