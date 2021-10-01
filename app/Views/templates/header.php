@@ -13,6 +13,7 @@
     <?= link_tag('css/style.css', 'stylesheet') ?>
     <?= script_tag('js/index.js') ?>
     <?= script_tag('bootstrap/js/bootstrap.bundle.min.js') ?>
+    <?= script_tag("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"); ?>
     <?= link_tag('bootstrap/bootstrap.min.css', 'stylesheet') ?>
     <?= link_tag('js/codemirror-5.61.0/lib/codemirror.css', 'stylesheet') ?>
     <?= link_tag('js/codemirror-5.61.0/theme/monokai.css', 'stylesheet') ?>
